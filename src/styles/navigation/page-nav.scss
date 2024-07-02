@@ -1,0 +1,12 @@
+@import 'styles/common/index.scss';
+
+.page-nav {
+    a {
+        color: inherit;
+    }
+}
+
+.big-nav-button {
+    @include big-nav-button();
+    font-family: $fontFancy;
+}

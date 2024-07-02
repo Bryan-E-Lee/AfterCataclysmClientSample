@@ -1,0 +1,73 @@
+@import 'styles/common/index.scss';
+
+@mixin roll-tool-section {
+    padding: $padder 0;
+}
+
+.roll-tool {
+    $iconDimension: 36px;
+    display: flex;
+    padding-bottom: $padder;
+    padding: 4px 8px;
+    text-align: center;
+    font-size: 24px;
+    line-height: $iconDimension;
+
+    >.game-icon {
+        margin-right: $padder;
+        font-size: $iconDimension;
+        vertical-align: sub;
+    }
+}
+
+.roll-tool-window {
+    width: $phoneThreshold;
+
+    .roll-tool-rolls {
+        @include roll-tool-section();
+
+        .themed-button {
+            font-size: $fontSizeTitle;
+        }
+        
+        .reroll-button {
+            display: block;
+            margin: $spacer auto;
+        }
+
+        .button-container {
+            .themed-button, span {
+                vertical-align: middle
+            }
+        }
+
+        .communal-rolls {
+            >label {
+                display: block;
+            }
+        }
+    }
+    
+    .roll-action-picker {
+        @include roll-tool-section();
+        border-top: $borderDashed;
+    
+        .roll-skill {
+            @include panel-darker();
+            display: inline-block;
+            margin: $padder;
+            padding: 0 $padder;
+            cursor: pointer;
+    
+            &.selected {
+                @include panel-interest();
+            }
+        }
+    }
+
+    .possible-hands {
+        @include roll-tool-section();
+        border-top: $borderDashed;
+        text-align: left;
+    }
+}

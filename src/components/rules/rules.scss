@@ -1,0 +1,22 @@
+@import 'styles/pages.scss';
+
+.game-info-page {
+    $colorHighlightRules: #6b00a5;
+
+    @include themed-page($colorHighlightRules);
+
+    >.contents {
+        flex-direction: row;
+    }
+
+    .example-icon {
+        font-size: $fontSizeTitle;
+    }
+}
+
+.rules-example-icon {
+    display: block;
+    font-size: 64px;
+    line-height: 64px;
+    text-align: center;
+}

@@ -1,0 +1,109 @@
+@import './fonts.scss';
+@import './scaffolding.scss';
+
+$widthNumericBlock: 128px;
+$heightNumericBlock: 100px;
+
+@mixin mini-panel() {
+    @include shadowy($small: true);
+    border: $borderThin;
+}
+
+@mixin panel($bg: $backgroundStandard, $color: null) {
+    @include shadowy();
+    background: $bg;
+    border: $borderThick;
+    @if $color != null {
+        color: $color;
+    }
+}
+
+@mixin panel-darker() {
+    @include panel($backgroundDarker);
+}
+
+@mixin panel-interest {
+    @include panel($backgroundInterest);
+
+    a, &:is(a) {
+        &:hover {
+            text-shadow: $textShadowOutline;
+        }
+    }
+}
+
+@mixin panel-dark {
+    @include panel($backgroundDark, $colorWhite);
+
+    a, &:is(a) {
+        color: lighten($colorBlue, 20%);
+
+        &:visited {
+            color: lighten($colorPurple, 20%);
+        }
+
+        &:hover {
+            color: lighten($colorTertiary, 10%);
+        }
+
+        &:active, &.active {
+            color: lighten($colorRed, 10%);
+        }
+    }
+}
+
+@mixin info-block {
+    @include panel-interest();
+
+    >label {
+        @include font-fancy();
+    }
+}
+
+@mixin character-panel {
+    @include flex-vertical();
+    @include panel($backgroundDarker);
+    padding: $spacer;
+
+    .character-panel-header {
+        margin: 0;
+        margin-bottom: $padder;
+    }
+}
+
+@mixin numeric-info-block {
+    @include info-block();
+    @include flex-vertical();
+    padding: 2px $spacer;
+    height: $heightNumericBlock;
+    text-align: center;
+
+    >label {
+        display: block;
+    }
+
+    .midsection {
+        @include perfect-center;
+        flex: 1 0 0;
+
+        .numeric-value {
+            @include box-centered();
+            @include circular(36px);
+            padding: $padder;
+            padding-left: $padder + 1;
+            border: $borderWidthThick solid $colorBlack;
+            line-height: 20px;
+            font-weight: bold;
+            font-size: 1.25em;
+        }
+    }
+
+    .undersection {
+        @include flex-fill();
+        @include flex-vertical();
+        @include center-flexed();
+        font-weight: bold;
+        line-height: $fontSizeSmall + 2;
+        font-size: $fontSizeSmall;
+    }
+}

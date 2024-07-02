@@ -1,0 +1,19 @@
+@import 'styles/common/index.scss';
+
+.damage-type-suite-value {
+    margin: 0 2px;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.damage-icon {
+    vertical-align: middle;
+    font-size: $fontSizeTitle;
+    line-height: $fontSizeTitle;
+}

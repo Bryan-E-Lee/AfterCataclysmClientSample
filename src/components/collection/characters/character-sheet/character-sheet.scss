@@ -1,0 +1,211 @@
+@import 'styles/common/index.scss';
+
+.sheet-nav {
+    @media screen and (min-width: $tabletThreshold) {
+        display: none;
+    }
+}
+
+.sheet-section {
+    display: block;
+    margin: 0;
+    width: 100%;
+
+    @media screen and (max-width: $tabletThreshold) {
+        margin: $spacer 0;
+
+        &.unviewing {
+            display: none;
+        }
+    }
+}
+
+.character-sheet {
+    @include flex-vertical();
+
+    $gridWidth: $widthNumericBlock + $spacer;//2 * $widthNumericBlock + 6 * $spacer;
+    flex: 1 0 0;
+    grid-template-columns: repeat(9, 1fr);
+    grid-auto-rows: 164px;
+
+    @media screen and (min-width: $tabletThreshold) {
+        display: grid;
+        grid-template-columns: repeat(9, minmax(0, 1fr));
+        grid-template-rows: 156px 156px 1fr;
+        gap: $spacer;
+
+        .character-sheet-demographics {
+            grid-column: 1 / 4;
+            grid-row: 1 / 1;
+        }
+
+        .sheet-perks {
+            @include character-panel();
+            grid-column: 4 / 6;
+            grid-row: 2 / 2;
+        }
+
+        .sheet-conditions {
+            @include character-panel();
+            grid-column: 8 / 10;
+            grid-row: 2 / 2;
+        }
+
+        .sheet-perks, .sheet-conditions {
+            >button {
+                @include flex-vertical();
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .character-sheet-metrics {
+            grid-column: 4 / 6;
+            grid-row: 1 / 1;
+        }
+
+        .character-sheet-skills {
+            grid-column: 1 / 4;
+            grid-row: 3 / 3;
+        }
+
+        .character-sheet-rhetorics {
+            grid-column: 6 / 10;
+            grid-row: 1 / 1;
+        }
+
+        .character-sheet-personalities {
+            grid-column: 6 / 8;
+            grid-row: 2 / 2;
+        }
+
+        .sheet-competencies {
+            @include character-panel();
+            grid-column: 1 / 4;
+            grid-row: 2 / 2;
+        }
+        
+        .sheet-main-section {
+            grid-column: 4 / 10;
+            grid-row: 3 / 3;
+        }
+    }
+
+    h3 {
+        text-align: left;
+    }
+
+    .character-sheet-metric {
+        font-weight: bold;
+    }
+
+    .sheet-toggles {
+        @include flex-fill();
+        @include flex-vertical();
+    }
+
+    .sheet-listing {
+        width: 100%;
+        text-align: left;
+
+        &.gridded {
+            padding-left: 0;
+            column-count: 2;
+            column-gap: 0;
+
+            >li {
+                margin-left: 2 * $spacer;
+            }
+        }
+
+        li.stopper {
+            list-style: none;
+            font-style: italic;
+        }
+    }
+
+    .sheet-competencies-window {
+        height: $breakdownWindowMaxHeight;
+    }
+
+    .sheet-metrics {
+        display: flex;
+        align-items: center;
+        flex: 1 0 0;
+
+        .metric {
+            @include flex-vertical();
+            @include center-flexed();
+            text-align: center;
+            flex: 1 0 0;
+
+            $iconSize: 36px;
+
+            .value {
+                display: flex;
+                font-size: $fontSizeLarge;
+                line-height: $iconSize;
+
+                .game-icon {
+                    font-size: $iconSize;
+                }
+            }
+
+            label {
+                @include font-fancy();
+            }
+        }
+
+        .metric-container {
+            position: relative;
+            height: 100%;
+            margin-left: $padder;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .metric-editor {
+        $buttonWidth: 128px;
+
+        top: 100%;
+        left: 50%;
+        margin-left: -($buttonWidth * 0.5) - $padder - $borderWidthThin;
+        z-index: 1;
+        padding: $padder;
+        text-align: center;
+
+        .editor {
+
+            input, .themed-button {
+                @include box-centered();
+                display: block;
+                width: $buttonWidth;
+            }
+
+            .themed-button {
+                @include outlined-text();
+                margin: $padder 0;
+                color: $colorWhite;
+
+                &:hover {
+                    color: $colorSenary;
+                    background: initial;
+                    text-shadow: none;
+                }
+            }
+
+            .increase-button {
+                background: $colorGreen;
+                box-shadow: 0 0 8px $colorGreen inset, create-shadow();
+            }
+
+            .decrease-button {
+                background: $colorRed;
+                box-shadow: 0 0 8px $colorRed inset, create-shadow();
+            }
+        }
+    }
+}

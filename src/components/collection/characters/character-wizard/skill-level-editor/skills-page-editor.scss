@@ -1,0 +1,6 @@
+@import 'styles/common/index.scss';
+
+.skills-page-editor .skills {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}

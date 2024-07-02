@@ -1,0 +1,23 @@
+@import 'styles/common/index.scss';
+
+.panel {
+    @include panel();
+}
+
+.panel-interest {
+    @include panel-interest();
+}
+
+.numeric-info-block {
+    @include numeric-info-block();
+}
+
+.entity-panel {
+    @include panel-darker();
+    padding: $panelPadding;
+
+    >header.entity-panel-header {
+        margin-bottom: $spacer;
+        font-size: $fontSizeTitle;
+    }
+}

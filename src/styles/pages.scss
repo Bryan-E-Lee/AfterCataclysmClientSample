@@ -1,0 +1,17 @@
+@import 'styles/common/index.scss';
+
+article {
+    flex: 1 0 0;
+    padding-top: $spacer;
+}
+
+figure.figure-group {
+    >figure {
+        display: inline-block;
+        margin: $spacer;
+    }
+}
+
+figure figcaption {
+    font-size: 14px;
+}

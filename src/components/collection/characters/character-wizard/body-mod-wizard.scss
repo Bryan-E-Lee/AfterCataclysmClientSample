@@ -1,0 +1,12 @@
+@import "styles/common/index.scss";
+
+.body-mod-wizard {
+    .current-mod {
+        @include border-dashed();
+        padding: $spacer;
+    }
+
+    .mod-searcher {
+        margin-top: $spacer;
+    }
+}

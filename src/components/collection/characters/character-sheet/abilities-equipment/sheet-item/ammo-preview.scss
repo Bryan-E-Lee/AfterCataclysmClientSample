@@ -1,0 +1,29 @@
+@import 'styles/common/index.scss';
+
+.ammo-preview {
+    display: flex;
+    margin: $padder;
+    border: $borderThin;
+
+    label {
+        display: block;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .name-icon {
+        width: 84px;
+        text-align: center;
+
+        i {
+            $iconDimension: 64px;
+            font-size: $iconDimension;
+            line-height: $iconDimension;
+        }
+    }
+
+    .descriptor-block {
+        padding: 0 $padder;
+        border-left: $borderThin;
+    }
+}

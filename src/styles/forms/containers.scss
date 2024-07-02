@@ -1,0 +1,11 @@
+@import "styles/common/index.scss";
+
+.form-fieldset {
+    legend {
+        @include standout();
+    }
+
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: $spacer;
+}

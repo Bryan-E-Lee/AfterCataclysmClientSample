@@ -1,0 +1,46 @@
+@import 'styles/common/index.scss';
+
+.tooltip {
+    max-width: 80vw;
+    max-height: 80vh;
+    background-color: $colorBackgroundInterest;
+    border: $borderThin;
+
+    >header, .tooltip-contents {
+        padding: $padder 20px;
+    }
+
+    >header {
+        border-bottom: $borderThin;
+        font-size: 2em;
+    }
+
+    .stat-block {
+        .stat-row {
+            display: flex;
+
+            .stat {
+                flex: 1 0 0;
+                text-align: center;
+
+                label {
+                    display: block;
+                    font-weight: bold;
+                    font-size: 0.9em;
+                }
+                
+                &:first-child {
+                    text-align: left;
+                }
+
+                &:last-child {
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    .description {
+        border-top: $borderThick;
+    }
+}

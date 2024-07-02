@@ -1,0 +1,35 @@
+@import 'styles/common/index.scss';
+
+$skillDimension: 128px;
+
+.character-sheet-skills {
+    @include character-panel();
+    text-align: center;
+
+    @media screen and (min-width: $tabletThreshold) {
+        grid-row: 2 / 4;
+        grid-column: 1 / 3;
+
+        >.skills {
+            grid-template-columns: $skillDimension;
+        }
+    }
+
+    >.skills {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.skill {
+    @include numeric-info-block();
+    margin: 0 auto $gap auto;
+    width: 100%;
+    max-width: $skillDimension;
+    text-align: center;
+    break-inside: avoid;
+
+    .interactable-button:disabled {
+        background-color: transparent;
+    }
+}

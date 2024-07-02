@@ -1,0 +1,25 @@
+@import 'styles/common/index.scss';
+
+.themed-button {
+    @include animate-transitions();
+    @include panel-dark();
+    @include font-fancy();
+    @include shadowy($small: true);
+    $buttonColor: $colorSenary;
+    padding: 4px $padder;
+    font-size: $fontSize;
+    color: $colorWhite;
+    border: $borderWidthThin solid $buttonColor;
+
+    &:hover {
+        background: $backgroundStandard;
+        color: $buttonColor;
+    }
+
+    &[disabled] {
+        background: $colorInputGray;
+        color: $colorDisabledGray;
+        font-style: italic;
+        cursor: not-allowed;
+    }
+}

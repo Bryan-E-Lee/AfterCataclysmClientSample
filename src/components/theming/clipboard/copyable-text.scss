@@ -1,0 +1,29 @@
+@import 'styles/common/index.scss';
+
+.copyable-text {
+    $color: $colorBlue;
+    @include border-dashed($color);
+    @include rounded();
+    display: inline-block;
+    padding: $padder $spacer;
+    background: $backgroundDarker;
+    box-shadow: none;
+    text-align: center;
+    font-weight: bold;
+
+    .text {
+        color: $color;
+
+        &.disabled {
+            color: $colorDisabledGray;
+        }
+    }
+
+    .copy-button {
+        font-size: 1.25em;
+    }
+
+    .description {
+        font-size: 0.85em;
+    }
+}

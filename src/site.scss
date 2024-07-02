@@ -1,0 +1,92 @@
+@import 'styles/reset.scss';
+@import 'styles/icons.scss';
+@import 'styles/common/index.scss';
+@import 'styles/components/index.scss';
+@import 'styles/constructs/index.scss';
+@import 'styles/forms/index.scss';
+@import 'styles/navigation/index.scss';
+@import 'styles/universals/index.scss';
+@import 'styles/visual-aids/index.scss';
+@import 'styles/game-icons.scss';
+@import url('https://fonts.googleapis.com/css2?family=Changa+One&family=Oxygen&family=Ubuntu&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+body {
+    @include flex-vertical;
+    @include font-standard;
+    margin: 0;
+    min-height: 100vh;
+    font-size: $fontSize;
+    line-height: $bodyLineHeight;
+    letter-spacing: 0.01em;
+    overflow-y: scroll;
+    color: $colorBlack;
+}
+
+header, h1, h2, h3, h4, h5, h6, .titular {
+    @include font-fancy;
+    line-height: initial;
+
+    &.bottom-margin {
+        margin-top: 0;
+    }
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+ol li::marker {
+    font-weight: bold;
+}
+
+#app {
+    @include flex-vertical();
+    height: 100vh;
+}
+
+main {
+    @include flex-vertical();
+    flex: 1 0 0;
+    padding: $gap 0 $spacer 0;
+    background: $backgroundStandard;
+
+    @media screen and (min-width: $tabletThreshold) {
+        padding-bottom: 80px;
+    }
+
+    >.contents {
+        @include site-centered();
+        @include flex-vertical();
+        flex: 1 0 0;
+        padding: 0 $spacer;
+    }
+}
+
+li {
+    margin: 2px 0;
+}
+
+dt {
+    font-weight: bold;
+}

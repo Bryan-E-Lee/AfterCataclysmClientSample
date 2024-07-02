@@ -1,0 +1,24 @@
+@import 'styles/common/index.scss';
+
+.character-sheet-personalities {
+    @include character-panel();
+    @include flex-vertical();
+    flex: 1 0 0;
+    text-align: left;
+    cursor: pointer;
+
+    @media screen and (min-width: $tabletThreshold) {
+        @include flex-vertical();
+    }
+
+    >header {
+        margin-bottom: $halfPadder;
+        font-size: 1.5em;
+    }
+
+    .personalities {
+        flex: 1 0 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

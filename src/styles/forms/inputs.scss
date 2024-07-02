@@ -1,0 +1,46 @@
+@import 'styles/common/index.scss';
+
+.form-field {
+    margin: $padder 0;
+
+    label {
+        margin-right: $padder;
+    }
+}
+
+input {
+    padding: $padder;
+    font-size: 16px;
+}
+
+input[type=text], input[type=number], textarea {
+    @include themed-input();
+}
+
+.disabled, input:disabled, textarea:disabled {
+    color: $colorDisabledGray;
+    font-style: italic;
+    cursor: not-allowed;
+}
+
+input:disabled, textarea:disabled {
+    background-color: $colorInputGray;
+}
+
+.delete-button {
+    color: $colorRed;
+    font-size: 1.25em;
+    line-height: inherit;
+}
+
+.interactable:not(.disabled) {
+    @include interactable();
+}
+
+.interactable-button {
+    @include interactable-button();
+
+    &:disabled, &:disabled:hover {
+        @extend .disabled;
+    }
+}

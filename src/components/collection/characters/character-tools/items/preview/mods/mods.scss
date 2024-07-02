@@ -1,0 +1,81 @@
+@import 'styles/common/index.scss';
+
+.mods, .mod-previews {
+    margin-bottom: $padder;
+}
+
+.mod-previews {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+$modHeight: 64px;
+
+.mod, .mod-preview {
+    padding: $padder;
+}
+
+.mod-collection {
+    >label {
+        font-weight: bold;
+    }
+}
+
+.mod-preview {
+    background-color: lighten($colorSenary, 60%);
+}
+
+.mod .basic-info, .mod-preview {
+    $innerSize: $modHeight - (2 * $padder) - 2px;
+    
+    >i {
+        @include symmetrical($innerSize);
+        display: inline-block;
+        font-size: $innerSize;
+    }
+
+    >label {
+        @include font-fancy;
+        padding-left: $padder;
+        line-height: $innerSize;
+        font-size: 1.25em;
+    }
+}
+
+.mod-preview {
+    @include symmetrical($modHeight);
+    display: flex;
+    margin: 0 $padder;
+    border: 2px inset lighten($colorBackgroundDark, 50%);
+    border-radius: $curvedBorderRadius;
+    cursor: pointer;
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+.mod {
+    display: inline-block;
+    margin: 0 $padder;
+    border: $borderThin;
+    border-radius: $curvedBorderRadius;
+    cursor: pointer;
+    text-align: center;
+
+    .basic-info {
+        display: flex;
+    }
+}
+
+.pickable-mod {
+    margin: 2px;
+    padding: $padder;
+    border: $borderThin;
+    border-radius: $curvedBorderRadius;
+    cursor: pointer;
+
+    h3 {
+        margin: 0;
+    }
+}

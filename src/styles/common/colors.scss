@@ -1,0 +1,39 @@
+$colorPrimary: #d6cfaf;
+$colorSecondary: #cf9c65;
+$colorTertiary: #d98359;
+$colorQuaternary: #6d3c32;
+$colorQuinary: #452e23;
+$colorSenary: #312d27;
+
+$colorShadow: lighten($colorSenary, 20%);
+$colorHighlight: $colorSecondary;
+$colorHighlightTransparent: rgba($colorHighlight, 0.5);
+
+$colorBackgroundLight: $colorPrimary;
+$colorBackgroundDark: $colorSenary;
+$colorBackgroundInterest: lighten($colorSenary, 70%);
+$colorBackgroundInput: white;
+$colorBackgroundTransparent: rgba($colorSenary, 0.5);
+
+$colorBorderSubtle: lighten($colorBackgroundDark, 20%);
+
+$colorWhite: #dfdfdf;
+$colorInputGray: #d1d1d1;
+$colorDisabledGray: gray;
+$colorGreen: #499666;
+$colorInputGreen: #8ddd81;
+$colorBlue: #425879;
+$colorInputBlue: #87a7df;
+$colorYellow: #9f8032;
+$colorOrange: #e68f00;
+$colorInputOrange: $colorOrange;
+$colorRed: #af503c;
+$colorInputRed: #f09ca2;
+$colorPurple: #693d52;
+$colorInputPurple: #b265ed;
+$colorBlack: $colorSenary;
+
+$colorSuccess: $colorGreen;
+$colorInfo: $colorBlue;
+$colorWarning: $colorYellow;
+$colorError: $colorRed;

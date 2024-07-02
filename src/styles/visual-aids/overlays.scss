@@ -1,0 +1,5 @@
+@import '../common/index.scss';
+
+.overlay {
+    @include overlay();
+}

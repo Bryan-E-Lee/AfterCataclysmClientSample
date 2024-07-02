@@ -1,0 +1,38 @@
+@import 'styles/common/index.scss';
+
+.items {
+
+    h3 {
+        margin-bottom: $padder;
+    }
+
+    .column-names {
+        @include item-column-container();
+
+        >.icon {
+            color: transparent;
+            user-select: none;
+        }
+    }
+
+    .equipment-list {
+        padding: 0;
+        list-style: none;
+    }
+
+    .no-items {
+        flex: 1 0 0;
+        font-weight: bold;
+        color: $colorError;
+    }
+
+    .equipment-container {
+        padding: $padder 0;
+        width: 100%;
+    }
+
+    .empty-indicator {
+        margin-bottom: $padder;
+        font-style: italic;
+    }
+}

@@ -1,0 +1,64 @@
+@import 'styles/common/index.scss';
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.mid-line {
+    vertical-align: middle;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.figure-bordered {
+    >img {
+        border: 1px solid $colorBackgroundDark;
+    }
+}
+
+.fancy {
+    @include font-fancy();
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.markdown-container {
+    display: inline;
+
+    .markdown-paragraph {
+        margin: $spacer 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.the-cataclysm {
+    font-family: $fontHeading;
+    font-weight: bold;
+    font-style: italic;
+}

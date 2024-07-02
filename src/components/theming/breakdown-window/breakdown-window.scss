@@ -1,0 +1,61 @@
+@import 'styles/common/index.scss';
+
+.breakdown-window {
+    @include panel();
+    top: 64px;
+    position: relative;
+    padding: $panelPadding;
+    width: 100%;
+    min-height: 92px;
+    max-height: $breakdownWindowMaxHeight;
+    overflow-y: auto;
+
+    max-width: $phoneThreshold * 0.9;
+
+    @media screen and (min-width: $tabletThreshold) {
+        max-width: $tabletThreshold * 0.9;
+    }
+
+    @media screen and (min-width: $laptopThreshold) {
+        max-width: $laptopThreshold * 0.9;
+    }
+
+    @media screen and (min-width: $desktopThreshold) {
+        max-width: $desktopThreshold * 0.9;
+    }
+
+    >header {
+        font-size: $fontSizeTitle;
+
+        >h1 {
+            margin-top: 0;
+            margin-bottom: $spacer;
+            padding-right: 1em;
+        }
+    }
+
+    .value-modifier {
+        display: flex;
+
+        >label {
+            display: block;
+            width: 80%;
+        }
+
+        div.value {
+            padding-right: 22px;
+        }
+
+        .value {
+            display: block;
+            width: 20%;
+            text-align: right;
+        }
+
+        &.total {
+            @include standout();
+            margin-top: $spacer;
+            border-top: $borderThin;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+@import 'styles/common/index.scss';
+
+@mixin toast($color) {
+    $darkerColor: darken($color, 20%);
+
+    border: $borderWidthThick solid $darkerColor;
+    background-color: $color;
+    
+    i {
+        color: $darkerColor;
+    }
+}
+
+$toastBaseHeight: 32px;
+
+.toast-container {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 100000;
+
+    .toast {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin: $padder;
+        padding: (2 * $padder) $padder;
+        width: 300px;
+        color: white;
+        border-radius: $curvedBorderRadius;
+        animation: toast-slide 0.35s;
+        transform-origin: center bottom;
+
+        >i, >button i {
+            font-size: $toastBaseHeight;
+        }
+
+        >p {
+            flex: 1 0 0;
+            margin: 0;
+            padding: 0 $padder;
+        }
+
+        &.success {
+            @include toast($colorSuccess);
+        }
+
+        &.info {
+            @include toast($colorInfo);
+        }
+
+        &.warning {
+            @include toast($colorWarning);
+        }
+
+        &.error {
+            @include toast($colorError);
+        }
+    }
+}
+
+@keyframes toast-slide {
+    from {
+        top: $toastBaseHeight;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}

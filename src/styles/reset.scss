@@ -1,0 +1,91 @@
+@import './common/index.scss';
+
+.game-icon {
+    display: inline-block;
+    line-height: inherit;
+
+    &:before {
+        vertical-align: middle;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $colorBlue;
+    cursor: pointer;
+    transition-duration: $animationDurationStandard;
+
+    &:visited {
+        color: $colorPurple;
+    }
+
+    &:hover {
+        color: $colorTertiary;
+    }
+
+    &:active, &.active {
+        color: $colorRed;
+    }
+
+    &.dark-link {
+        color: $colorInputBlue;
+
+        &:visited {
+            color: $colorInputPurple;
+        }
+
+        &:hover {
+            color: $colorSecondary;
+        }
+
+        &:active, &.active {
+            color: $colorInputRed;
+        }
+    }
+}
+
+button {
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+label {
+    cursor: inherit;
+}
+
+ol, ul {
+    margin: 0;
+    padding-left: 24px;
+}
+
+dd {
+    p:first-child {
+        margin-top: 0;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+input {
+    line-height: $bodyLineHeight;
+}
+
+textarea {
+    vertical-align: text-top;
+}
+
+figure {
+    margin: auto;
+    
+    img {
+        max-width: 100%;
+    }
+}

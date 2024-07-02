@@ -1,0 +1,34 @@
+@import 'styles/common/index.scss';
+
+.collapsible-region {
+    border-top: $borderDashed;
+    border-bottom: $borderDashed;
+
+    >header {
+        @include font-fancy();
+        padding: $padder 0;
+        font-size: $fontSizeTitle;
+        cursor: pointer;
+
+        //TODO: Figure out why this has to be done for dice to look normal
+        .die-face {
+            top: 0;
+        }
+
+        >.site-icon {
+            font-size: 1.5em;
+        }
+    }
+
+    .collapsible-region-contents {
+        display: block;
+
+        &.collapsed {
+            display: none;
+        }
+    }
+}
+
+.collapsible-region +.collapsible-region {
+    border-top: none;
+}

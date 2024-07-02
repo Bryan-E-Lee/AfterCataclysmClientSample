@@ -1,0 +1,28 @@
+@import 'styles/common/index.scss';
+
+.content-divider {
+    border-top: $borderWidthThick dashed $colorQuinary;
+
+    &:first-child {
+        border-top: none;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.center-flexed {
+    @include center-flexed();
+}
+
+.flex, .center-flexed {
+    &.vertical {
+        flex-direction: column;
+    }
+}
+
+.fill {
+    @include flex-fill();
+    display: flex;
+}

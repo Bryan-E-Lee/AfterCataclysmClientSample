@@ -1,0 +1,23 @@
+@import 'styles/common/index.scss';
+
+.directive {
+    @include panel-darker();
+    margin: $spacer 0;
+    padding: $padder;
+    clear: both;
+
+    h6 {
+        @include font-fancy;
+        margin: 0 0 $padder 0;
+        border: none;
+        font-size: 1.5em;
+
+        &:after {
+            border: none;
+        }
+    }
+
+    p { 
+        margin: $padder 0 0 0;
+    }
+}

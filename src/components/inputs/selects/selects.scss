@@ -1,0 +1,108 @@
+@import 'styles/common/index.scss';
+
+@mixin option-group-element {
+    @include shadowy($small: true);
+    background: $colorBackgroundInput;
+}
+
+@mixin option-section-element {
+    @include shadowy($small: true);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    border-top: $borderThin;
+}
+
+@mixin select {
+    @include themed-input();
+    @include option-group-element();
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0;
+
+    &.disabled {
+        background-color: $colorInputGray;
+        cursor: not-allowed;
+    }
+
+    select {
+        display: none;
+    }
+
+    input {
+        display: block;
+        z-index: 1;
+        padding: $padder;
+        width: 100%;
+        border: none;
+        border-top: $borderThin;
+        outline: none;
+
+        &.hidden {
+            display: none;
+        }
+    }
+
+    .options {
+        @include option-section-element();
+        @include option-group-element();
+        margin: 0;
+        padding: 0;
+        max-height: 220px;
+        overflow-y: auto;
+        list-style: none;
+        text-align: left;
+
+        &.hidden {
+            display: none;
+        }
+
+        &.selected {
+
+            li {
+                display: inline-block;
+                margin: $padder;
+                padding: 2px $padder;
+                background: $colorBackgroundInterest;
+                border: $borderWidthThin solid $colorBackgroundDark;
+
+                i {
+                    margin-right: 3px;
+                }
+            }
+        }
+
+        .option {
+            margin: 0;
+            padding: $padder;
+            cursor: pointer;
+
+            &:hover {
+                background: $colorHighlight;
+            }
+
+            &.disabled {
+                background-color: $colorInputGray;
+                font-style: italic;
+                cursor: not-allowed;
+            }
+        }
+
+    }
+
+    .no-results {
+        @include option-section-element();
+        @include option-group-element();
+        padding: $padder;
+        background: $colorBackgroundInput;
+        font-style: italic;
+        text-align: left;
+
+        &.hidden {
+            display: none;
+        }
+    }
+}

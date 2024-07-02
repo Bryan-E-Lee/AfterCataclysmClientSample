@@ -1,0 +1,25 @@
+@import './theming.scss';
+
+@mixin themed-input {
+    @include shadowy($small: true);
+    padding: $padder;
+    font-size: 16px;
+    border: none;
+
+    input {
+        box-shadow: none;
+        border: none;
+        outline: none;
+    }
+}
+
+@mixin big-nav-button {
+    @include symmetrical(128px);
+    @include panel($backgroundDarker);
+    @include center-flexed();
+    display: inline-flex;
+    margin: $gap;
+    padding: $padder;
+    vertical-align: middle;
+    text-align: center;
+}

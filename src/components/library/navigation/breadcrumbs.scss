@@ -1,0 +1,21 @@
+@import 'styles/common/index.scss';
+
+.breadcrumbs {
+    @include panel-darker();
+    margin-bottom: $spacer;
+    padding: $padder;
+    font-weight: bold;
+
+    .breadcrumb {
+        margin-right: $spacer;
+
+        &:last-child:after {
+            display: none;
+        }
+
+        &:after {
+            margin-left: $spacer;
+            content: ">";
+        }
+    }
+}

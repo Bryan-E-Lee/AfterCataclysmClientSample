@@ -1,0 +1,33 @@
+@import "styles/common/index.scss";
+
+.notification {
+    margin: $spacer 0;
+    padding: $padder $spacer;
+    font-weight: bold;
+    background: $backgroundDarker;
+    line-height: 32px;
+    border-style: solid;
+    border-color: $colorBackgroundDark;
+    border-radius: $curvedBorderRadius;
+    border-width: $borderWidthThick;
+
+    &.info {
+        background: $backgroundBlue;
+    }
+
+    &.warning {
+        background: $backgroundInterest;
+    }
+
+    &.error {
+        background: $backgroundRed;
+    }
+
+    &.success {
+        background: $backgroundGreen;
+    }
+
+    .primary-icon {
+        font-size: 36px;
+    }
+}

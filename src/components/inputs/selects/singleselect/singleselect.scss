@@ -1,0 +1,44 @@
+@import 'styles/common/index.scss';
+@import '../selects.scss';
+
+.singleselect {
+    @include select;
+    width: 320px;
+    cursor: pointer;
+    vertical-align: baseline;
+
+    input {
+        @include option-group-element();
+        @include option-section-element();
+    }
+
+    $optionsTopPosition: calc(100% + 37px);
+
+    .no-results {
+        top: $optionsTopPosition;
+    }
+
+    .selected {
+        display: flex;
+        padding: $padder;
+
+        .selection-name {
+            flex: 1 0 0;
+
+            &.transparent {
+                color: transparent;
+                user-select: none;
+            }
+        }
+
+        .site-icon {
+            $size: 24px;
+            font-size: $size;
+            line-height: $size;
+        }
+    }
+
+    .options {
+        top: $optionsTopPosition;
+    }
+}

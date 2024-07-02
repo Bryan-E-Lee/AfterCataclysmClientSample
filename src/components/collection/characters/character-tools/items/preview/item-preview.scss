@@ -1,0 +1,46 @@
+@import 'styles/common/index.scss';
+
+.item-preview-header {
+    font-size: $fontSizeTitle;
+
+    >.game-icon, >span {
+        vertical-align: middle;
+    }
+}
+
+.breakdown-window >.item-preview-header {
+    font-size: $fontSizeHuge;
+}
+
+.item-preview {
+    .damage-type-suite-value {
+        font-weight: bold;
+    }
+
+    .item-preview-ability-group {
+        margin: $spacer 0;
+    }
+    
+    .item-info {
+        $iconSize: 36px;
+        font-weight: bold;
+        font-size: $fontSizeLarge;
+        line-height: $iconSize;
+
+        >.item-icon {
+            font-size: $iconSize;
+        }
+
+        .weight, .cost {
+            margin-right: $padder;
+        }
+    }
+
+    .description {
+        padding: $padder 0;
+    }
+
+    .hand-trigger >label {
+        font-weight: bold;
+    }
+}

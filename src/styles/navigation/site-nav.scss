@@ -1,0 +1,81 @@
+@import '../common/index.scss';
+
+.site-nav {
+    @include shadowy($color: $colorBlack, $small: true);
+    position: relative;
+    z-index: $siteNavZIndex;
+    background: $backgroundDark;
+    color: $colorWhite;
+
+    .site-nav-contents {
+        @include site-centered;
+        display: flex;
+
+        a {
+            @include animate-transitions;
+            display: block;
+            color: inherit;
+            padding: $spacer ($gap);
+            text-decoration: none;
+
+            &:hover {
+                color: whitesmoke;
+            }
+        }
+
+        >.left-contents, >.right-contents {
+            display: flex;
+            align-items: center;
+        }
+
+        >.left-contents {
+            flex: 1 0 0;
+
+            &.hamburger-content {    
+                @media screen and (min-width: $tabletThreshold) {
+                    display: none;
+                }
+
+                .hamburger-button {
+                    @include animate-transitions();
+                    padding: 4px $spacer;
+                    color: inherit;
+                    line-height: 20px;
+                    font-size: 36px;
+
+                    &:hover {
+                        color: whitesmoke;
+                    }
+                }
+
+                .context-menu {
+                    position: absolute;
+                    top: 100%;
+                    background: $backgroundDark;
+                    border: none;
+                    box-shadow: 2px 3px 4px $colorShadow;
+                }
+            }
+
+            &.normal-content {
+                @media screen and (max-width: $tabletThreshold) {
+                    display: none;
+                }
+            }
+            
+            >.links {
+                display: flex;
+
+                &.inactive {
+                    display: none;
+                }
+
+                @media screen and (min-width: $tabletThreshold) {
+                    &.inactive {
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}

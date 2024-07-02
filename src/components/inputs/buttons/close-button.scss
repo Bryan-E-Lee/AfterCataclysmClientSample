@@ -1,0 +1,20 @@
+@import 'styles/common/index.scss';
+
+.close-button, button.close-button {
+    position: absolute;
+    top: $padder;
+    right: $padder;
+    font-size: 2em;
+    color: $colorError;
+
+    &:hover {
+        >span, >i {
+            font-weight: bold;
+        }
+    }
+
+    >span, >i {
+        @include animate-transitions();
+        display: block;
+    }
+}

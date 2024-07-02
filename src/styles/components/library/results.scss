@@ -1,0 +1,55 @@
+@import 'styles/common/index.scss';
+
+.search-results {
+    margin-top: $spacer;
+}
+
+.results-header, .record {
+    @include font-fancy();
+    flex: 1 0 0;
+    display: flex;
+    align-items: center;
+    font-size: $fontSizeLarge;
+    text-align: left;
+
+    .expand-icon {
+        width: 20px;
+    }
+
+    .icon {
+        margin-right: $padder;
+        font-size: $fontSizeTitle;
+        vertical-align: middle;
+
+        >.game-icon {
+            display: block;
+        }
+    }
+
+    .name {
+        flex: 2.5 0 0;
+    } 
+    
+    .cost, .weight {
+        flex: 1 0 0;
+    }
+    
+    .tags {
+        flex: 3 0 0;
+        text-align: right
+    }
+
+    .sortable {
+        cursor: pointer;
+    }
+
+    @import './weapon-results.scss';
+}
+
+.record {
+    @include panel();
+    margin: $spacer 0;
+    padding: $padder;
+    background: $backgroundInterest;
+    cursor: pointer;
+}

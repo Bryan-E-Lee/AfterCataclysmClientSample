@@ -1,0 +1,26 @@
+@import 'styles/common/index.scss';
+
+@mixin page-nav {
+    flex: 1 1 0;
+}
+
+.page-nav {
+    @include panel-darker();
+    display: flex;
+    padding: $padder;
+    font-weight: bold;
+
+    .page-nav-prev {
+        @include page-nav;
+        text-align: left;
+    }
+    
+    .page-nav-next {
+        @include page-nav;
+        text-align: right;
+    }
+
+    .site-icon {
+        font-weight: bold;
+    }
+}

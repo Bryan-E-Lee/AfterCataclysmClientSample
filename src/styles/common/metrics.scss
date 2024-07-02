@@ -1,0 +1,26 @@
+$padder: 6px;
+$halfPadder: $padder / 2;
+$spacer: 10px;
+$gap: 2 * $spacer;
+$panelPadding: $spacer (2 * $spacer);
+
+$bodyLineHeight: 24px;
+
+$borderWidthThin: 1px;
+$borderWidthThick: 2px;
+
+$phoneThreshold: 540px;
+$tabletThreshold: 768px;
+$subTabletThreshold: $tabletThreshold - 1;
+$laptopThreshold: 992px;
+$desktopThreshold: 1200px;
+
+$navOrdinalWidth: 24px;
+
+$curvedBorderRadius: 6px;
+
+$goldenRatio: 1.61803398875;
+
+$breakdownWindowMaxHeight: 90vh;
+
+$siteNavZIndex: 1000;

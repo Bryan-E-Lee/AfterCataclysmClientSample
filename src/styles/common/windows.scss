@@ -1,0 +1,47 @@
+@import './colors.scss';
+@import './scaffolding.scss';
+
+@mixin overlay($zIndex: 10) {
+    @include flex-vertical();
+    @include symmetrical(100%);
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    visibility: hidden;
+    background: $colorBackgroundTransparent;
+    opacity: 0;
+    transition: $animationDurationStandard opacity;
+
+    &.centered {
+        justify-content: center;
+    }
+
+    &.active {
+        opacity: 1;
+        z-index: $zIndex;
+        visibility: visible;
+    }
+
+    &.opaque {
+        background: $backgroundStandard;
+    }
+
+    &.clear {
+        background: none;
+    }
+}
+
+@mixin notice($color: $colorBlue) {
+    @include rounded();
+    display: inline-block;
+    padding: $padder $spacer;
+    color: $colorWhite;
+    background-color: $color;
+    
+    .site-icon {
+        margin: 0 $halfPadder $halfPadder 0;
+        font-size: 1.25em;
+    }
+}

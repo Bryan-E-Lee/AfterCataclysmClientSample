@@ -1,0 +1,46 @@
+@import './scaffolding.scss';
+
+@mixin row {
+    display: flex;
+}
+
+@mixin item-column-container {
+    @include row();
+    @include flex-fill();
+
+    >* {
+        padding: 0 $padder;
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    >.icon {
+        display: flex;
+        flex: 0 1 0;
+        font-size: 1.25em;
+    }
+
+    >.name {
+        flex: 2 0 0;
+    }
+
+    >.cost, >.weight {
+        flex: 1 0 0;
+        text-align: right;
+    }
+
+    >.tags {
+        flex: 2 0 0;
+        text-align: right;
+    }
+
+    .item-icon {
+        font-size: 1.25em;
+    }
+}

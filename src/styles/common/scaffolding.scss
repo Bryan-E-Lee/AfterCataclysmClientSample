@@ -1,0 +1,65 @@
+@import './metrics.scss';
+
+@mixin box-centered($topMargin: 0, $bottomMargin: $topMargin) {
+    margin: $topMargin auto $bottomMargin auto;
+}
+
+@mixin site-centered {
+    @include box-centered();
+    max-width: $desktopThreshold;
+    width: 100%;
+}
+
+@mixin center-flexed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin perfect-center {
+    @include center-flexed();
+    display: flex;
+}
+
+@mixin perfect-center-vertical {
+    @include perfect-center();
+    flex-direction: column;
+}
+
+@mixin fill {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin flex-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-fill($fill: 1) {
+    flex: $fill 0 0;
+}
+
+@mixin symmetrical($dimension) {
+    width: $dimension;
+    height: $dimension;
+}
+
+@mixin rounded {
+    border-radius: $curvedBorderRadius;
+}
+
+@mixin circular($dimension) {
+    @include symmetrical($dimension);
+    border-radius: 50%;
+}
+
+@mixin horizontal-scroll($dimension) {
+    max-width: $dimension;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+@mixin interactable {
+    cursor: pointer;
+}

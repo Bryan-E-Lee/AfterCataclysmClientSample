@@ -1,0 +1,11 @@
+.move-item-container {
+    display: inline;
+    position: relative;
+}
+
+.move-item-window {
+    top: 0;
+    left: 100%;
+    cursor: default;
+    white-space: nowrap;
+}

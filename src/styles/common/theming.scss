@@ -1,0 +1,224 @@
+@import './animation.scss';
+@import './colors.scss';
+@import './metrics.scss';
+
+$boxShadowStandard: 0 1px 4px 1px $colorShadow;
+$boxShadowSmall: 0 1px 2px 1px $colorShadow;
+
+@mixin outlined-text {
+    text-shadow: 0 0 2px $colorShadow;
+}
+
+@function create-shadow($color: $colorShadow, $small: false, $inset: false) {
+    $shadow: 0 1px 4px 1px $color;
+    @if $small {
+        $shadow: 0 1px 2px 1px $color;
+    }
+
+    @if $inset {
+        $shadow: $shadow inset;
+    }
+
+    @return $shadow;
+}
+
+@mixin shadowy($color: $colorShadow, $small: false, $inset: false) {
+    box-shadow: create-shadow($color, $small, $inset);
+}
+
+$textShadowOutline: 0 0 2px black, 0 0 2px black;
+
+$borderThin: $borderWidthThin solid $colorShadow;
+$borderThick: $borderWidthThick solid $colorShadow;
+
+$borderDashedThin: $borderWidthThin dashed $colorShadow;
+$borderDashed: $borderWidthThick dashed $colorShadow;
+
+@mixin border-standard {
+    border: 4px solid;
+    border-image-source: url('/public/assets/images/backgrounds/background-dark.png');
+    border-image-width: 4px;
+    border-image-slice: 16;
+    border-image-repeat: round;
+}
+
+@mixin border-dashed($color: $colorShadow) {
+    border: $borderWidthThick dashed $color;
+}
+
+@mixin interactable() {
+    cursor: pointer;
+}
+
+@mixin interactable-button {
+    @include animate-transitions();
+    @include interactable();
+
+    &:hover:not(:disabled):not(.disabled) {
+        color: $colorRed;
+    }
+}
+
+@mixin standout {
+    font-weight: bold;
+}
+
+@mixin themed-table {
+    margin: $spacer 0;
+    width: 100%;
+    border-collapse: collapse;
+
+    .heading {
+        background: $backgroundDark;
+        color: $colorWhite;
+        border-color: $colorBlack;
+    }
+
+    thead tr {
+        th, td {
+            @extend .heading;
+        }
+    }
+
+    th, td {
+        padding: $padder;
+        border: $borderThick;
+
+        &.normal-background {
+            background: $backgroundStandard;
+        }
+    }
+
+    tr.unpublished td {
+        background: $backgroundInterest;
+    }
+
+    tr.deleted td {
+        background: $backgroundRed;
+    }
+
+    tr th:not(.normal-background) {
+        @extend .heading;
+    }
+
+    tr.published-row td {
+        background: $backgroundGreenImage;
+    }
+
+    tr.unpublished-row td {
+        background: $backgroundInterestImage;
+    }
+
+    tr.deleted-row td {
+        background: $backgroundGreenImage;
+    }
+}
+
+@mixin themed-page($color: $colorBlue) {
+    h1, h2, h3, h4, h5 {
+        padding: 3px 0;
+        border-width: 0;
+        border-style: solid;
+        border-color: $color;
+    }
+
+    h1 {
+        border-bottom-width: 2px;
+    }
+    
+    h2, h3 {
+        border-bottom-width: 1px;
+    }
+
+    h3, h4, h5, h6 {
+        @include font-heading;
+        margin-bottom: $padder;
+    }
+
+    h4, h5, h6 {
+        position: relative;
+
+        &:after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100% * 1/4;
+            content: " ";
+            border-bottom: 1px solid $color;
+        }
+    }
+
+    hr {
+        background: $color;
+    }
+
+    aside.article-navigation {    
+        a {
+            &.active, &:hover {
+                border-color: $color;
+            }
+        }
+        
+        i.fa {
+            color: $color;
+        }
+
+        ol.section-navs>li:hover {
+            >a {
+                border-color: $color;
+            }
+        }
+
+        .page-nav-next a {
+            &.active, &:hover {
+                border-color: $colorPurple;
+            }
+        }
+    }
+
+    .expanding-section {
+        h3 {
+            @include animate-transitions;
+
+            &:hover {
+                color: $color;
+            }
+        }   
+    }
+
+    a {
+        @include animate-transitions;
+        color: inherit;
+
+        &.active, &:hover {
+            color: $color;
+        }
+    }
+
+    section {
+        margin-top: 2em;
+        
+        &:first-child {
+            margin-top: initial;
+        }
+
+        &.divided-section {
+            &:not(first-child) {
+                margin-top: 60px;
+            }
+        }
+
+        a {
+            text-decoration: underline;
+            color: $color;
+    
+            &:visited {
+                color: darken($color, 15%);
+            }
+    
+            &.active, &:hover {
+                color: lighten($color, 15%);
+            }
+        }
+    }
+}

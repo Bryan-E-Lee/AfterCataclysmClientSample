@@ -1,0 +1,70 @@
+@import 'styles/common/index.scss';
+
+.collapsible-section {
+    @include panel();
+    margin: $spacer 0;
+    // overflow: hidden;
+
+    &.collapsed .expand-collapse-container >.contents {
+        display: none;
+    }
+
+    >header {
+        @include font-fancy();
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: $padder;
+        background: $backgroundInterest;
+        font-size: $fontSizeLarge;
+        line-height: 26px;
+
+        >.contents {
+            flex: 1 0 0;
+            display: flex;
+        }
+    }
+
+    .expand-icon, .collapse-icon {
+        margin: 0 $padder 0 ($padder * 0.5);
+    }
+
+    .expand-collapse-container {
+        // @include animate-transitions;
+
+        >.contents {
+            border-top: $borderThin;
+            padding: $padder;
+
+            >p{
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        >.details {
+            display: none;
+            padding: $padder;
+            border-top: $borderThin;
+        }
+    }
+
+    &.collapsible header {
+        cursor: pointer;
+    }
+
+    &.constricted {
+        .header {
+            border-bottom: none;
+        }
+
+        .expand-collapse-container {
+            height: 0;
+        }
+    }
+}

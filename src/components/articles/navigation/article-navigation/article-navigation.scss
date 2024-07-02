@@ -1,0 +1,107 @@
+@import 'styles/common/index.scss';
+
+aside.article-navigation {
+    $tabletWidth: 300px;
+    padding: $spacer 0;
+
+    $invisiBorder: 3px solid transparent;
+    $sectionDividerBorder: $borderWidthThin solid lighten($colorBackgroundDark, 50%);
+
+    ol, ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li>ul li {
+            padding-left: $gap;
+
+            a, a.active, a:hover {
+                border-color: transparent;
+
+                i {
+                    transform: scale(0.5);
+                }
+            }
+        }
+    }
+
+    .prev-next {
+        display: flex;
+        border-top: $sectionDividerBorder;
+        font-weight: bold;
+
+        >div {
+            @include flex-fill();
+        }
+
+        .page-nav-root {
+            flex: 0 1 0;
+            padding: 0 $padder;
+
+            a {
+                border: none;
+                font-size: $fontSizeLarge;
+            }
+        }
+
+        .page-nav-next a {
+            text-align: right;
+            border-left-width: 0;
+            border-right: $invisiBorder;
+        }
+    }
+
+    a {
+        color: inherit;
+    }
+
+    nav.nav-container {
+        @include panel-darker();
+        width: inherit;
+
+        li {
+            margin: 0;
+            padding: 0;
+
+            li a {
+                padding-left: 20px;
+            }
+        }
+
+        a {
+            display: block;
+            padding: 3px 0;
+            border-left: $invisiBorder;
+            font-size: 14px;
+        }
+
+        .article-title {
+            @include font-fancy;
+            display: block;
+            padding: $padder 0 $padder $padder;
+            font-size: 1.1em;
+        }
+
+        .section-navs {
+            border-top: $sectionDividerBorder;
+        }
+    }
+
+    @media screen and (max-width: $tabletThreshold) {
+        display: none;
+    }
+
+    @media screen and (min-width: $tabletThreshold) {
+        margin-right: $spacer;
+        width: $tabletWidth;
+
+        .nav-container.fixed-nav {
+            position: fixed;
+            top: 30px;
+        }
+    }
+
+    .bullet {
+        font-size: 0.5em;
+    }
+}

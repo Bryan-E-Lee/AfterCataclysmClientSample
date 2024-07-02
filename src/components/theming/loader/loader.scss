@@ -1,0 +1,72 @@
+@import 'styles/common/index.scss';
+
+.loader {
+    @include center-flexed();
+    @include flex-vertical();
+    padding: $padder 0;
+    width: 100%;
+}
+
+.loader-icon, .loader-icon::before, .loader-icon::after {
+    border: 3px solid;
+}
+
+.loader-icon {    
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        } 
+        @keyframes rotationBack {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+
+    @mixin loader-border($firstColor, $secondColor) {
+        border-color: $firstColor $firstColor $secondColor $secondColor;
+    }
+
+    $dimension: var(--loader-dimension);
+    $bumper: 8px;
+    @include circular($dimension);
+    @include loader-border($colorBackgroundDark, transparent);
+    display: inline-block;
+    position: relative;
+    animation: rotation 1s linear infinite;
+    vertical-align: middle;
+    
+    &::before, &::after {
+        @include circular(calc(#{$dimension} - #{$bumper}));
+        @include loader-border(transparent, $colorSecondary);
+
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        animation: rotationBack 0.5s linear infinite;
+        transform-origin: center center;
+    }
+
+    &::before {
+        @include circular(calc(#{$dimension} - #{$bumper * 2}));
+        @include loader-border($colorBackgroundDark, transparent);
+        animation: rotation 1.5s linear infinite;
+    }
+}
+
+.loader-text {
+    margin-top: $spacer;
+    font-weight: bold;
+    font-size: $fontSizeLarge;
+}

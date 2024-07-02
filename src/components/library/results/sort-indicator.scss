@@ -1,0 +1,25 @@
+@import 'styles/common/index.scss';
+
+.sort-indicator {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+
+    &.inactive {
+        color: darkgray;
+    }
+
+    &.active {
+        .active {
+            color: $colorBackgroundDark;
+        }
+
+        .inactive {
+            color: darkgray;
+        }
+    }
+
+    i {
+        line-height: 0.5em;
+    }
+}

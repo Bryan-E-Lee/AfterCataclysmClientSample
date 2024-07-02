@@ -1,0 +1,25 @@
+@import 'styles/common/index.scss';
+
+.table-of-contents {
+    @include panel-darker();
+    margin-top: $spacer;
+    padding: $padder 40px;
+
+    >li {
+        padding: $padder;
+        vertical-align: text-top;
+
+        >a {
+            font-weight: bold;
+        }
+    }
+
+    &.chapter-view {
+        column-count: 4;
+        break-inside: avoid-column;
+
+        .sublink ul {
+            display: none;
+        }
+    }
+}

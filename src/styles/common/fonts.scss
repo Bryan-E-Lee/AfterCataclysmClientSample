@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+$fontSize: 16px;
+$fontSizeSmall: 12px;
+$fontSizeLarge: 20px;
+$fontSizeTitle: 24px;
+$fontSizeHuge: 48px;
+$fontHeading: 'Ubuntu', sans-serif;
+@mixin font-heading {
+    font-family: $fontHeading;
+}
+
+$fontStandard: 'Oxygen', sans-serif;
+@mixin font-standard {
+    font-family: $fontStandard;
+}
+
+$fontFancy: 'Changa One', cursive;
+@mixin font-fancy {
+    font-weight: normal;
+    font-family: $fontFancy;
+}

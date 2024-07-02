@@ -1,0 +1,15 @@
+@import 'styles/common/index.scss';
+
+.library {
+    .library-link {
+        @include panel();
+        @include symmetrical(128px);
+        @include center-flexed();
+        display: inline-flex;
+        margin: $gap;
+        padding: $padder;
+        vertical-align: middle;
+        text-align: center;
+        border: $borderWidthThick solid $colorBackgroundDark;
+    }
+}

@@ -1,0 +1,9 @@
+@import 'styles/common/index.scss';
+
+.hidden {
+    display: none;
+}
+
+.standout {
+    @include standout();
+}

@@ -1,0 +1,41 @@
+@import 'styles/common/index.scss';
+
+.editable-die {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+
+    .die-picker {
+        position: absolute;
+        display: none;
+        left: -40px;
+        border: $borderThin;
+        border-radius: $curvedBorderRadius;
+        background: $backgroundStandard;
+
+        &.expanded {
+            display: flex;
+        }
+
+        .die-option {
+            @include animate-transitions;
+            width: 24px;
+            height: 36px;
+
+            &:first-child {
+                border-top-left-radius: $curvedBorderRadius;
+                border-bottom-left-radius: $curvedBorderRadius;
+            }
+
+            &:last-child {
+                border-top-right-radius: $curvedBorderRadius;
+                border-bottom-right-radius: $curvedBorderRadius;
+            }
+
+            &:hover:not(.disabled) {
+                background: $backgroundDark;
+                color: $colorWhite;
+            }
+        }
+    }
+}

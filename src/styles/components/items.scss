@@ -1,0 +1,5 @@
+@import 'styles/common/index.scss';
+
+.item-column-container {
+    @include item-column-container();
+}

@@ -1,0 +1,25 @@
+@import 'styles/common/index.scss';
+
+.character-sheet-rhetorics {
+    @include character-panel();
+
+    .rhetorics {
+        @include flex-fill();
+        @include center-flexed();
+
+        .rhetoric-wrapper {
+            @include flex-fill();
+            @include center-flexed();
+
+            .rhetoric {
+                @include numeric-info-block();
+                @include interactable();
+                width: 128px;
+
+                .interactable-button:disabled {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}

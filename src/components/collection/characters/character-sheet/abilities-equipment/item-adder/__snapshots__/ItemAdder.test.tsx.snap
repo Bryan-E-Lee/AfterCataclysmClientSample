@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`item adder render add to container state snapshot 1`] = `
+<div
+  className="overlay inactive"
+/>
+`;
+
+exports[`item adder render default state snapshot 1`] = `
+<div
+  className="overlay inactive"
+/>
+`;

@@ -1,0 +1,45 @@
+@import 'styles/common/index.scss';
+
+.tooltip-container {
+    cursor: help;
+    display: inline;
+    vertical-align: middle;
+}
+
+.tooltip {
+    @include panel();
+    position: fixed;
+    min-width: 256px;
+    left: 10vw;
+    bottom: 10vw;
+    width: 80vw;
+    height: 80vh;
+    padding: $padder $spacer;
+    font-size: $fontSizeSmall;
+    z-index: $siteNavZIndex + 1;
+
+    .tooltip-header {
+        @include font-fancy;
+        margin-bottom: $padder;
+        font-size: 1.5em;
+    }
+
+    p {
+        margin: $padder 0;
+        line-height: $fontSizeLarge;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    
+    @media only screen and (min-width: ($phoneThreshold + 1)) {
+        width: auto;
+        height: auto;
+        max-width: 480px;
+
+        .close-button {
+            display: none;
+        }
+    }
+}

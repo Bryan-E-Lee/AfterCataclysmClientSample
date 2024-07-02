@@ -1,0 +1,11 @@
+@import 'styles/common/index.scss';
+
+.transitioning-enter {
+    @include animate-transitions();
+    opacity: 1;
+}
+
+.transitioning-exit {
+    @include animate-transitions();
+    opacity: 0;
+}

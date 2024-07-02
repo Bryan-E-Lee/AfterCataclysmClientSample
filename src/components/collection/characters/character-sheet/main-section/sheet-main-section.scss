@@ -1,0 +1,27 @@
+@import 'styles/common/index.scss';
+
+.sheet-main-section {
+    @include character-panel();
+    // grid-row: 3;
+    // grid-column: 3 / 8;
+
+    >header {
+        margin-bottom: $spacer;
+
+        >a {
+            margin: 0 $halfPadder;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .character-abilities {
+        margin-top: $spacer;
+    }
+}

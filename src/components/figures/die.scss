@@ -1,0 +1,61 @@
+@import 'styles/common/index.scss';
+
+@mixin die() {
+    $dieDimension: 24px;
+    $dieDimensionBig: 64px;
+
+    @include font-fancy();
+    @include symmetrical($dieDimension);
+    position: relative;
+    display: inline-block;
+    background: url('/public/assets/images/symbols/single-shape-icon.svg');
+    box-sizing: content-box;
+    margin: 0 ($padder * 0.5);
+    color: $colorBlack;
+    text-align: center;
+    line-height: $dieDimension;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    .die-face {
+        @include animate-transitions();
+        $faceHeight: 16px;
+        position: relative;
+        top: 2px;
+        left: 2px;
+        display: inline-block;
+        width: 18px;
+        height: $faceHeight;
+        background: $backgroundStandard;
+        font-size: $fontSize;
+        line-height: $faceHeight;
+        user-select: none;
+    }
+
+    &.big {
+        @include symmetrical($dieDimensionBig);
+        
+        .die-face {
+            @include symmetrical(44px);
+            $faceFontSize: 42px;
+            top: 15px;
+            left: 5px;
+            font-size: $faceFontSize;
+            line-height: $faceFontSize;
+        }
+    }
+
+    &.interactable:hover:not(.disabled) .die-face, &.selected .die-face {
+        background: $backgroundInterest;
+    }
+}
+
+.die {
+    @include die();
+}

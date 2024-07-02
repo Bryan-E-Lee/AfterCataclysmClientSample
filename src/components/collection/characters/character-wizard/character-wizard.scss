@@ -1,0 +1,30 @@
+@import 'styles/common/index.scss';
+
+.character-wizard {
+    @include flex-fill();
+    @include flex-vertical();
+
+    >header {
+        margin-bottom: $spacer;
+
+        h1 a {
+            margin-left: $spacer;
+            font-size: 0.5em;
+        }
+
+        nav {
+            a {
+                margin-right: $spacer;
+            }
+        }
+    }
+
+    .character-wizard-editor {
+        @include flex-fill();
+        @include flex-vertical();
+
+        .content {
+            @include flex-fill();
+        }
+    }
+}

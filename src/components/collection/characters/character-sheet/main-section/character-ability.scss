@@ -1,0 +1,52 @@
+@import 'styles/common/index.scss';
+
+
+.character-ability {
+    &.attack >header {
+        background: $backgroundRed;
+        background-color: $colorInputRed;
+    }
+
+    &.spell >header {
+        background: $backgroundBlue;
+        background-color: $colorInputBlue;
+    }
+
+    &.feature >header {
+        background: $backgroundGreen;
+        background-color: $colorInputGreen;
+    }
+
+    >header >.contents {
+        >.game-icon {
+            font-size: $fontSizeTitle;
+        }
+    }
+
+    .expand-collapse-container {
+        .damage-type-suite {
+            margin: $padder 0;
+        }
+    }
+
+    .trigger-condition, .source-description {
+        margin-bottom: $padder;
+        padding-bottom: $padder;
+        border-bottom: $borderDashedThin;
+    }
+
+    .trigger-description {
+        padding: 0 (2 * $spacer);
+    }
+
+    .spell-properties {
+        padding-bottom: $padder;
+        font-size: $fontSizeLarge;
+        border-bottom: $borderDashedThin;
+
+        .game-icon {
+            vertical-align: middle;
+            font-size: $fontSizeTitle;
+        }
+    }
+}

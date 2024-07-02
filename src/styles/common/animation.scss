@@ -1,0 +1,23 @@
+@import './colors.scss';
+
+$animationDurationStandard: 0.15s;
+
+@mixin animate-transitions($duration: $animationDurationStandard) {
+    transition: all $duration;
+}
+
+@mixin background-transition($mainColor, $activeColor) {
+    background: $mainColor;
+
+    &[disabled], &:hover, &.active, &.disabled {
+        background: $activeColor;
+    }
+}
+
+@mixin text-transition($mainColor, $activeColor) {
+    color: $mainColor;
+
+    &[disabled], &:hover, &.active, &.disabled {
+        color: $activeColor;
+    }
+}

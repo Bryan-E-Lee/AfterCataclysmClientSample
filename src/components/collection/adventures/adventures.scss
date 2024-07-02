@@ -1,0 +1,27 @@
+@import 'styles/pages.scss';
+
+.adventure {
+    @include themed-page();
+
+    .adventure-invite {
+        .copyable-text {
+            margin-bottom: $padder;
+        }
+    }
+
+    .adventure-content {
+        margin-top: $padder;
+
+        .notice {
+            margin-right: $padder;
+        }
+    }    
+
+    .adventure-notes {
+        display: flex;
+
+        .notes-section {
+            flex: 1 0 0;
+        }
+    }
+}

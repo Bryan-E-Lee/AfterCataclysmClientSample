@@ -1,0 +1,183 @@
+@import 'styles/common/index.scss';
+
+.splash-page {
+    padding: 0;
+}
+
+.splash-divider {
+    @include shadowy();
+    margin: 0;
+    height: $spacer;
+    background: $backgroundInterest;
+    z-index: 100;
+    border: none;
+}
+
+.splash-area {
+    @include flex-vertical();
+
+    $fontSizeTitanic: 96px;
+    $keepInterestSpace: 84px;
+
+    .splash-rules-button {
+        @media only screen and (max-width: $subTabletThreshold) {
+            display: block;
+        }
+
+        .themed-button {
+            @include shadowy($color: $colorBlack);
+            padding: $spacer (2 * $spacer);
+            font-size: $fontSizeTitle;
+
+            @media only screen and (max-width: $tabletThreshold) {
+                @include box-centered();
+                display: block;
+                padding: $padder $spacer;
+                font-size: $fontSizeLarge;
+            }
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: $spacer 0;
+    }
+
+    h1 {
+        font-size: $fontSizeTitanic;
+        line-height: $fontSizeTitanic;
+    }
+
+    h2 {
+        font-size: $fontSizeHuge;
+        line-height: $fontSizeHuge;
+    }
+
+    h3 {
+        font-size: $fontSizeTitle;
+        line-height: $fontSizeTitle;
+    }
+
+    &.necromancer {
+        @include font-fancy();
+        color: $colorWhite;
+        $outlineWidth: 2px;
+        text-shadow:
+            $outlineWidth $outlineWidth 0 black,
+            $outlineWidth -$outlineWidth 0 black,
+            -$outlineWidth $outlineWidth 0 black,
+            -$outlineWidth -$outlineWidth 0 black;
+        min-width: 100%;
+        height: calc(100vh - #{$fontSize + 2 * $spacer + $borderWidthThick + $padder + $keepInterestSpace});
+        background: no-repeat
+            url('/public/assets/images/splash/necromancer-background.png')
+            rgba(0, 0, 0, 0.75);
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+
+        h3 {
+            margin-top: 30px;
+            line-height: 32px;
+        }
+
+        .contents {
+            @include center-flexed();
+            text-align: center;
+        }
+    } 
+
+    &.about-game, &.call-to-action {
+        .contents {
+            flex-direction: row;
+        }
+    }
+
+    &.about-game {
+        position: relative;
+        padding: 5vh 0;
+
+        @media only screen and (max-width: $subTabletThreshold) {
+            .contents {
+                flex-direction: column-reverse;
+            }
+        }
+    }
+
+    &.call-to-action {
+        padding: 5vh 0;
+        background: $backgroundDark;
+        color: $colorWhite;
+
+        @media only screen and (max-width: $subTabletThreshold) {
+            .contents {
+                flex-direction: column;
+            }
+        }
+    }
+
+    .contents {
+        @include flex-fill();
+        @include flex-vertical();
+        margin: 0 auto;
+        padding: 5vh 0;
+        padding: 0 $spacer;
+        width: $desktopThreshold;
+        max-width: 100%;
+    }
+
+    .hook-image {
+        @include center-flexed();
+        max-width: 33vw;
+
+        @media only screen and (max-width: $subTabletThreshold) {
+            margin: 0 auto;
+        }
+
+        &.flip {
+            transform: scaleX(-1);
+        }
+
+        img {
+            max-height: 50vh;
+        }
+    }
+
+    .hook {
+        padding: $spacer;
+        padding-top: 8vh;
+        font-size: $fontSize;
+
+        &.call-hook {
+            text-align: center;
+        }
+
+        >p:first-child {
+            margin-top: 0;
+        }
+
+        .super-emphasize {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        @media only screen and (max-width: $subTabletThreshold) {
+            padding-top: 0;
+        }
+    }
+
+    .links {
+        display: flex;
+
+        .link-wrapper {
+            flex: 1 0 0;
+            text-align: center;
+        }
+    }
+
+    .sub-note {
+        margin-top: $spacer;
+        font-size: $fontSizeSmall;
+        line-height: $fontSize;
+        font-style: italic;
+    }
+}

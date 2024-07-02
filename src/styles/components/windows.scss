@@ -1,0 +1,23 @@
+@import 'styles/common/index.scss';
+
+.option-window {
+    @include panel();
+    @include shadowy($small: true);
+    position: absolute;
+
+    >.title {
+        @include standout();
+        padding: $padder;
+    }
+
+    >button.option {
+        display: block;
+        padding: $padder;
+        width: 100%;
+        text-align: left;
+
+        &:hover {
+            background-color: $colorHighlightTransparent;
+        }
+    }
+}

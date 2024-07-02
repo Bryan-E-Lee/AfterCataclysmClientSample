@@ -1,0 +1,22 @@
+@import 'styles/common/index.scss';
+
+.sheet-item {
+    @include item-column-container();
+    margin: $padder 0;
+    cursor: pointer;
+    border-top: 1px dotted $colorShadow;
+
+    &.pending {
+        font-style: italic;
+        color: $colorDisabledGray;
+    }
+
+    &.container {
+        font-weight: bold;
+        border-bottom: $borderThin;
+    }
+}
+
+.sheet-container-add {
+    margin-bottom: $spacer;
+}

@@ -1,0 +1,59 @@
+@import 'styles/common/index.scss';
+
+.themed-radio {
+    display: inline-block;
+    font-size: 32px;
+    user-select: none;
+    vertical-align: middle;
+
+    &.text-options {
+        font-size: $fontSizeLarge;
+    }
+
+    &.data-adjacent {
+        margin-bottom: $padder;
+    }
+
+    >.options, >label {
+        vertical-align: middle;
+    }
+
+    >.options {
+        display: inline-block;
+
+        .option {
+            @include animate-transitions();
+            display: inline-flex;
+            padding: $halfPadder $padder;
+            border-top: $borderThick;
+            border-right: $borderThin;
+            border-bottom: $borderThick;
+
+            &:hover {
+                background-color: transparentize($colorOrange, 0.5);
+            }
+
+            &.selected, &:active {
+                background-color: $colorOrange;
+            }
+
+            &:first-child {
+                border-left: $borderThick;
+                border-top-left-radius: $curvedBorderRadius;
+                border-bottom-left-radius: $curvedBorderRadius;
+            }
+
+            &:last-child {
+                border-right: $borderThick;
+                border-top-right-radius: $curvedBorderRadius;
+                border-bottom-right-radius: $curvedBorderRadius;
+            }
+        }
+    }
+
+    >label {
+        @include font-fancy();
+        margin-left: $padder;
+        font-size: 0.5em;
+    }
+}

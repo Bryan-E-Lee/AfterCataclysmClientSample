@@ -1,0 +1,30 @@
+@import '../common/index.scss';
+
+::-webkit-scrollbar {
+    @include symmetrical(4px);
+
+    @media screen and (min-width: $tabletThreshold) {
+        @include symmetrical(5px);
+    }
+
+    @media screen and (min-width: $laptopThreshold) {
+        @include symmetrical(6px);
+    }
+
+    @media screen and (min-width: $desktopThreshold) {
+        @include symmetrical(8px);
+    }
+}
+
+* {
+    scrollbar-color: $colorHighlight $colorSenary;
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar-track {
+    background: $colorSenary;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $colorHighlight;
+}

@@ -1,0 +1,122 @@
+@import 'styles/common/index.scss';
+
+.sheet-slots {
+    position: relative;
+}
+
+.sheet-slot {
+    $slotDimension: 96px;
+    $slotIconSize: $slotDimension - (2 * $padder) - (2 * $borderWidthThick);
+    $caretDimension: 34px;
+
+    display: inline-block;
+    margin: $padder;
+    width: $slotDimension;
+    
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &.custom-slot .slot-box{
+        border-color: $colorGreen;
+    }
+
+    &.active .slot-box {
+        outline: $padder solid $colorInputGreen;
+    }
+
+    &.not-editable {
+        cursor: not-allowed;
+    }
+
+    .slot-box {
+        @include panel-darker();
+        @include symmetrical($slotDimension);
+        margin: $halfPadder 0;
+        padding: $padder;
+        text-align: center;
+        line-height: $slotIconSize;
+        font-size: $slotIconSize;
+        font-family: $fontFancy;
+        font-style: normal;
+
+        .slot-box:disabled {
+            font-style: normal;
+        }
+    }
+
+    .text {
+        $lineHeight: 16px;
+        position: relative;
+        display: table-cell;
+        margin-top: $halfPadder;
+        width: $slotDimension;
+        height: $lineHeight * 2;
+        line-height: $lineHeight;
+        vertical-align: bottom;
+        font-size: 0.75em;
+        text-align: center;
+        font-weight: bold;
+
+        >.mod-caret {
+            @include animate-transitions();
+            @include symmetrical($caretDimension);
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            margin-left: $caretDimension * -0.5;
+            z-index: 2;
+            opacity: 1;
+            background: $backgroundCaret;
+
+            &.hidden {
+                opacity: 0;
+            }
+        }
+
+        &.top {
+            vertical-align: top;
+        }
+
+        &.bottom {
+            vertical-align: bottom;
+        }
+    }
+
+    .slot-box + .text {
+        vertical-align: top;
+    }
+
+    .delete-mod-button {
+        color: $colorBlack;
+        background: $backgroundRed;
+    }
+}
+
+.mod-options {
+    height: 100%;
+
+    &.hidden {
+        opacity: 0;
+    }
+
+    >label {
+        vertical-align: middle;
+    }
+
+    >.options {
+        margin-top: $padder;
+
+        .mod-options-section .contents {
+            text-align: center;
+        }
+    }
+}
+
+.mod-detail-view {
+    height: 100%;
+}

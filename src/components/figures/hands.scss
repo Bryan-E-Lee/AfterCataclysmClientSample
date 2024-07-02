@@ -1,0 +1,29 @@
+@import 'styles/common/index.scss';
+
+.hand {
+    font-size: 0.85em;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    &.rolled {
+        position: relative;
+        top: -2px;
+    
+        &:after {
+            $height: 3px;
+            position: absolute;
+            left: 1px;
+            top: 50%;
+            margin-top: -1px;
+            content: " ";
+            width: calc(100% - 2px);
+            height: $height;
+            background-color: $colorBackgroundDark;
+        }
+    
+        .die {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}

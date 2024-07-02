@@ -1,0 +1,23 @@
+@import 'styles/common/index.scss';
+
+.tags-container {
+    &:first-child {
+        margin-top: 0;
+    }
+
+    >label {
+        margin-right: $padder;
+    }
+
+    >.tag {
+        @include panel-darker();
+        @include mini-panel();
+        display: inline-block;
+        margin: 0 $halfPadder;
+        padding: $halfPadder;
+        vertical-align: middle;
+        font-weight: bold;
+        font-size: 0.75em;
+        line-height: 1.5em;
+    }
+}

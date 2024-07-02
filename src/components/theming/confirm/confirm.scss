@@ -1,0 +1,23 @@
+@import "styles/common/index.scss";
+
+.confirmation-window {
+    position: relative;
+    padding: $panelPadding;
+    top: 96px;
+    background: $backgroundStandard;
+    min-height: 92px;
+    max-width: 412px;
+
+    >.content {
+        text-align: justify;
+    }
+
+    >.confirmation-controls {
+        @include center-flexed();
+        margin-top: $spacer;
+
+        >.themed-button {
+            margin: 0 $padder;
+        }
+    }
+}

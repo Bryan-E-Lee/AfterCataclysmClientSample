@@ -1,0 +1,14 @@
+@import 'styles/common/index.scss';
+
+.hand-trigger {
+    >label {
+        display: block;
+    }
+
+    padding: $padder 0;
+    border-bottom: $borderThin;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}

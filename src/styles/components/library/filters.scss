@@ -1,0 +1,84 @@
+@import 'styles/common/index.scss';
+
+.filters {
+    @include panel($backgroundDarker);
+    padding: $padder;
+    list-style: none;
+
+    .filter-group {
+        display: inline-flex;
+        flex-direction: row;
+        flex: 1 0 0;
+        width: 20%;
+        text-align: center
+    }
+
+    .filter {
+        @include flex-vertical;
+        flex: 1 0 0;
+        padding: $padder;
+
+        input {
+            width: 100%;
+        }
+
+        &.half { 
+            width: 50%;
+        }
+    }
+
+    .filter-controls {
+        flex: 1 0 0;
+        display: inline-flex;
+        width: 20%;
+
+        .filter {
+            justify-content: center;
+            text-align: center;
+
+            button {
+                display: inline-block;
+                margin-bottom: 8px;
+                
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    label {
+        @include font-fancy();
+        text-align: left;
+    }
+}
+
+.type-filters {
+    @include center-flexed();
+    border-bottom: $borderDashed;
+
+    .type-filter-button {
+        margin: $spacer auto;
+    
+        &:hover:not(.active) .game-icon {
+            box-shadow: 0 0 24px $colorInputGreen inset;
+        }
+    
+        &.active .game-icon {
+            background: $backgroundGreen;
+        }
+        
+        .game-icon {
+            $dimension: 64px;
+            @include circular($dimension);
+            display: block;
+            margin: 0 auto;
+            padding: $spacer;
+            box-sizing: content-box;
+            border: 6px solid $colorBlack;
+            line-height: $dimension;
+            font-size: $dimension;
+            color: $colorBlack;
+        }
+    }
+}

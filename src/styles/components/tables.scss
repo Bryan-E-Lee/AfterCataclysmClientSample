@@ -1,0 +1,13 @@
+@import 'styles/common/index.scss';
+
+.rules-table, .themed-table {
+    @include themed-table();
+}
+
+.rules-table {
+    width: 100%;
+    
+    th, td {
+        text-align: center;
+    }
+}

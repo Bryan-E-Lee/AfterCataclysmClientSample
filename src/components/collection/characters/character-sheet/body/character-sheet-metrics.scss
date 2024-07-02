@@ -1,0 +1,166 @@
+@import 'styles/common/index.scss';
+
+.character-sheet-metrics {
+    @include character-panel();
+    @include fill();
+    flex-direction: row;
+
+    @media screen and (min-width: $tabletThreshold) {
+        display: flex;
+        grid-row: 1;
+        grid-column: 3 / 8;
+    }
+
+    .metrics-container {
+        @include flex-vertical();
+        @include center-flexed();
+        @include flex-fill();
+        position: relative;
+
+        .metrics-row {
+            @include flex-fill();
+            display: flex;
+            width: 100%;
+
+            .character-sheet-metric {
+                @include perfect-center-vertical();
+                @include flex-fill();
+                text-align: center;
+        
+                >label {
+                    display: block;
+                }
+        
+                >.icon-value {
+                    $iconSize: 36px;
+                    font-size: $fontSizeLarge;
+                    line-height: $iconSize;
+                    
+                    >.game-icon {
+                        font-size: $iconSize;
+                        vertical-align: bottom;
+                    }
+                }
+            }
+        }
+    }
+
+    label {
+        @include font-fancy();
+    }
+
+    .character-sheet-reducibles {
+        @include perfect-center-vertical();
+
+        .character-sheet-reducible {
+            @include flex-fill();
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 24px;
+
+            label {
+                display: inline-block;
+                margin-right: $padder;
+                width: 64px;
+                text-align: left;
+            }
+
+            .wounds-reminder {
+                margin-left: $padder;
+                font-size: 0.8em;
+                vertical-align: middle;
+            }
+
+            .value {
+                display: inline-block;
+                white-space: nowrap;
+
+                i, span {
+                    vertical-align: middle;
+                }
+            }
+
+            .metric-editor {
+                top: 100%;
+                z-index: 1;
+                padding: $padder;
+                text-align: center;
+
+                .editor {
+
+                    input, .themed-button {
+                        @include box-centered();
+                        display: block;
+                        width: 128px;
+                    }
+
+                    .themed-button {
+                        @include outlined-text();
+                        margin: $padder 0;
+                        color: $colorWhite;
+
+                        &:hover {
+                            color: $colorSenary;
+                            background: initial;
+                            text-shadow: none;
+                        }
+                    }
+
+                    .increase-button {
+                        background: $colorGreen;
+                        box-shadow: 0 0 8px $colorGreen inset, create-shadow();
+                    }
+
+                    .decrease-button {
+                        background: $colorRed;
+                        box-shadow: 0 0 8px $colorRed inset, create-shadow();
+                    }
+                }
+            }
+        }
+    }
+
+    .sheet-listing {
+        @include flex-fill();
+        display: flex;
+        padding: 0;
+        flex-wrap: wrap;
+        flex-direction: column;
+        font-size: 0.8em;
+        list-style: none;
+
+        li {
+            $bulletSpacing: 4px;
+            margin-left: $bulletSpacing;
+            padding-left: $bulletSpacing;
+
+            &:before {
+                position: relative;
+                left: -$bulletSpacing;
+                content: "\2022";
+            }
+        }
+    }
+
+    .sheet-toggles {
+        display: flex;
+        flex-direction: column;
+        margin-left: $spacer;
+        padding: 0 $padder;
+        text-align: left;
+
+        &.perks {
+            @include flex-fill();
+        }
+
+        &.conditions {
+            width: 98px;
+        }
+
+        >label {
+            display: block;
+        }
+    }
+}

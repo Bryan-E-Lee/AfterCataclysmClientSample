@@ -1,0 +1,8 @@
+@import 'styles/common/index.scss';
+
+.nav-ordinal {
+    display: inline-block;
+    margin-right: $padder;
+    width: $navOrdinalWidth;
+    text-align: right;
+}

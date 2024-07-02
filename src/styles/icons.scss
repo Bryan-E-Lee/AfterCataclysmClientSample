@@ -1,0 +1,17 @@
+$materialSettings: 'wght' 400, 'GRAD' 0, 'opsz' 48;
+.material-symbols-outlined {
+    vertical-align: middle;
+    font-size: inherit;
+}
+
+.unfilled {
+    font-variation-settings: 'FILL' 0, $materialSettings;
+}
+
+.filled {
+    font-variation-settings: 'FILL' 1, $materialSettings;
+}
+
+.game-icon::before {
+    display: block;
+}
