@@ -1,8 +1,9 @@
 import * as JsonPatch from 'fast-json-patch';
-import { Adventure } from "../../entities/adventures/Adventure";
+import { Adventure, CommunalDice } from "../../entities/adventures/Adventure";
 import { ApiResponse, SuccessApiResponse } from "../responses/ApiResponse";
 import { AccountApi } from "./Api.Account";
 import { AccountApiServerConfig } from "./config/AccountApiServerConfig";
+import { DieFace } from '../../entities/rolls/Roll';
 
 export class AdventureApi extends AccountApi<typeof AccountApiServerConfig.AdventureApiConfig> {
     /**
@@ -138,16 +139,18 @@ export class AdventureApi extends AccountApi<typeof AccountApiServerConfig.Adven
 
     /**
      * Joins an adventure.
+     * @param connectionId The adventure connection id used by this instance.
      * @param inviteId The adventure's unique invitation id.
      * @returns The adventure's unique id.
      */
-    public async join(inviteId: string): Promise<ApiResponse<string>> {
+    public async join(connectionId: string | null, inviteId: string): Promise<ApiResponse<string>> {
         try {
             const { uri, method } = this.config.getUriAndMethod('joinAdventure', { name: ':inviteId', value: inviteId });
             const token = await this.getToken();
             const response = await fetch(uri, {
                 ...this.createDefaultRequestDetails(token),
-                method
+                method,
+                body: JSON.stringify({connectionId})
             });
 
             if (this.isServerError(response)) {
@@ -163,15 +166,17 @@ export class AdventureApi extends AccountApi<typeof AccountApiServerConfig.Adven
 
     /**
      * Leaves an adventure.
+     * @param connectionId The adventure connection id used by this instance.
      * @param id The adventure's unique identifier.
      */
-    public async leave(id: string): Promise<ApiResponse<void>> {
+    public async leave(connectionId: string | null, id: string): Promise<ApiResponse<void>> {
         try {
             const { uri, method } = this.config.getUriAndMethod('leaveAdventure', { name: ':id', value: id });
             const token = await this.getToken();
             const response = await fetch(uri, {
                 ...this.createDefaultRequestDetails(token),
-                method
+                method,
+                body: JSON.stringify({connectionId})
             });
 
             if (this.isServerError(response)) {
@@ -200,6 +205,59 @@ export class AdventureApi extends AccountApi<typeof AccountApiServerConfig.Adven
 
             if (this.isServerError(response)) {
                 throw new Error('Server error deactivating adventure.');
+            }
+            return this.generateResponse(response);
+        }
+        catch (e) {
+            console.error(e);
+            throw e;
+        }
+    }
+
+    /**
+     * Sets an adventure's communal dice values.
+     * @param connectionId The adventure connection id used by this instance.
+     * @param id The adventure's unique identifier.
+     * @param communalDice The communal dice values to set.
+     */
+    public async setCommunalDice(connectionId: string | null, id: string, communalDice: CommunalDice): Promise<ApiResponse<void>> {
+        try {
+            const { uri, method } = this.config.getUriAndMethod('setCommunalDice', { name: ':id', value: id });
+            const token = await this.getToken();
+            const response = await fetch(uri, {
+                ...this.createDefaultRequestDetails(token),
+                method,
+                body: JSON.stringify({ connectionId, payload: communalDice })
+            });
+
+            if (this.isServerError(response)) {
+                throw new Error("Server error setting communal dice.");
+            }
+            return this.generateResponse(response);
+        }
+        catch (e) {
+            console.error(e);
+            throw e;
+        }
+    }
+
+    /**
+     * Rolls the adventure's communal dice.
+     * @param id The adventure's unique identifier.
+     * @returns The rolled dice values.
+     */
+    public async rollCommunalDice(connectionId: string | null, id: string): Promise<ApiResponse<CommunalDice>> {
+        try {
+            const { uri, method } = this.config.getUriAndMethod('rollCommunalDice', { name: ':id', value: id });
+            const token = await this.getToken();
+            const response = await fetch(uri, {
+                ...this.createDefaultRequestDetails(token),
+                method,
+                body: JSON.stringify({connectionId})
+            });
+
+            if (this.isServerError(response)) {
+                throw new Error("Server error rolling communal dice.");
             }
             return this.generateResponse(response);
         }

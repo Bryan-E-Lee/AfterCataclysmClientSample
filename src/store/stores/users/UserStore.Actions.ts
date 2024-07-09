@@ -4,13 +4,17 @@ import { AppThunkAction } from "../ApplicationState";
 import { ToastAction, ToastDispatchables } from "../toasts/Toasts.Actions";
 
 type UserSet = { type: 'USER_SET', userAccount: UserAccount }
+type UserSetAdventureConnection = { type: 'USER_SET_ADVENTURE_CONNECTION', adventureConnectionId: string | null }
 export type UsersGet = { type: 'USERS_GET', users: UserAccount[] }
 type UserClear = { type: 'USER_CLEAR' }
 type UserSetDisplayName = { type: 'USER_SET_DISPLAY_NAME', displayName: string, identifier: string }
 
-export type UserAction = UserSet | UsersGet | UserClear | UserSetDisplayName;
+export type UserAction = UserSet | UserSetAdventureConnection | UsersGet | UserClear | UserSetDisplayName;
 
 export const UserActions = {
+    setAdventureConnection: (adventureConnectionId: string): AppThunkAction<UserSetAdventureConnection> =>
+        (dispatch) => dispatch({ type: 'USER_SET_ADVENTURE_CONNECTION', adventureConnectionId }),
+
     getUserAccountData: (): AppThunkAction<UserSet | ToastAction> =>
         async (dispatch, getState) => {
             const api = getState().api.users;

@@ -3,6 +3,7 @@ import { ItemFilterInitializer } from "../../../../../entities/filters/ItemFilte
 import { DieFace } from "../../../../../entities/rolls/Roll";
 import { SkillName } from "../../../../../entities/library/skills/SkillMap";
 import { AppThunkAction } from "../../../ApplicationState";
+import { CommunalDice } from "../../../../../entities/adventures/Adventure";
 
 export type SheetSet = { type: 'SHEET_SET', character: CharacterInitializer }
 export type SheetSetPreviewItemInstanceId = { type: 'SHEET_SET_PREVIEW_ITEM_INSTANCE_ID', instanceId?: string }
@@ -12,7 +13,7 @@ export type SheetHideItemAdder = { type: 'SHEET_HIDE_ITEM_ADDER' }
 export type SheetFilterItems = { type: 'SHEET_FILTER_ITEMS', filter: ItemFilterInitializer }
 export type SheetRollHand = { type: 'SHEET_ROLL_HAND' }
 export type SheetSetRoll = { type: 'SHEET_SET_ROLL', index: number, face: DieFace }
-export type SheetSetCommunalRolls = { type: 'SHEET_SET_COMMUNAL_ROLLS', communalRolls: DieFace[] }
+export type SheetSetCommunalRolls = { type: 'SHEET_SET_COMMUNAL_ROLLS', communalRolls: CommunalDice }
 export type SheetSetRollSkill = { type: 'SHEET_SET_ROLL_SKILL', rollSkill: SkillName }
 export type SheetClearRollSkill = { type: 'SHEET_CLEAR_ROLL_SKILL' }
 export type SheetReroll = { type: 'SHEET_REROLL', character: Character, indices: number[] }
@@ -95,7 +96,7 @@ export const SheetToolActions = {
             dispatch({ type: 'SHEET_SET_ROLL', index, face })
         },
 
-    setCommunalRolls: (communalRolls: DieFace[]): AppThunkAction<SheetSetCommunalRolls> =>
+    setCommunalRolls: (communalRolls: CommunalDice): AppThunkAction<SheetSetCommunalRolls> =>
         (dispatch) => {
             dispatch({ type: 'SHEET_SET_COMMUNAL_ROLLS', communalRolls });
         },

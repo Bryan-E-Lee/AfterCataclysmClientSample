@@ -3,6 +3,7 @@
 .loader {
     @include center-flexed();
     @include flex-vertical();
+    @include flex-fill();
     padding: $padder 0;
     width: 100%;
 }

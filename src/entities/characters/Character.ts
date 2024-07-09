@@ -32,7 +32,7 @@ import { ModSlot } from "../library/items/mods/ModSlot";
 import { ModFactory } from "../library/items/mods/ModFactory";
 import { RecordStatus } from "../RecordStatus";
 
-export interface CharacterInitializer {
+export type CharacterInitializer = {
     id: string;
     ownerId: string;
     name: string;
@@ -84,7 +84,7 @@ export type CharacterEntityReferences = {
     skills: SortedSet<SkillInitializer>;
 }
 
-interface CharacterCollections {
+type CharacterCollections = {
     competencies: CompetencyInitializer[];
     conditions: Condition[];
     items: ItemInitializer[];

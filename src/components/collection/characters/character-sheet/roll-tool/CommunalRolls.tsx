@@ -17,10 +17,8 @@ export const CommunalRolls: React.FC = () => {
     return (
         <div className="communal-rolls">
             <label className="standout">Communal Dice</label>
-            <EditableDie faceValue={communalRolls[0]}
-                onChange={onChangeFirst} />
-            <EditableDie faceValue={communalRolls[1]}
-                onChange={onChangeSecond} />
+            <EditableDie faceValue={communalRolls[0]} onChange={onChangeFirst} />
+            <EditableDie faceValue={communalRolls[1]} onChange={onChangeSecond} />
         </div>
     );
 }

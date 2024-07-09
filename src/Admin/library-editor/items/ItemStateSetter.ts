@@ -12,9 +12,9 @@ import { SkillRequirement } from "../../../entities/library/skills/SkillRequirem
 import { RecordStatus } from "../../../entities/RecordStatus";
 
 /**
- * Did some crazy things to avoid passing in a ton of props and having components inherit from one another.
- * Extracted type of a react state update so that the component can inject it's state setter into this class
- * and pass this class into the common component.
+ * Did some crazy shit to avoid passing in a ton of props and having components inherit from one another.
+ * This is that shit. Extracted type of a react state update so that the component can inject it's state
+ * setter into this class and pass this class into the common component.
  * */
 export class ItemStateSetter<I extends UnknownItemInitializer, C extends CrudItemInitializer<I>> {
     public constructor(setState: Dispatch<SetStateAction<C>>) {

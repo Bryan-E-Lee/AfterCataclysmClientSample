@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Character, CollectionsToReferences } from '../../../entities/characters/Character';
 import { ApplicationState } from "../../../store/stores/ApplicationState";
 import { SheetActions } from "../../../store/stores/characters/sheet/actions/Sheet.Actions";
-import { LoadingText } from '../../theming/loader/LoadingText';
 import { ItemAdder } from './character-sheet/abilities-equipment/item-adder';
 import { CharacterSheetComponent } from './character-sheet/CharacterSheet';
 import { SlotChangingSkill, isSlotChangingSkill } from '../../../entities/library/skills/SlotChangingSkill';
 import { AddSlotChangeRequest, IsAddSlotChangeRequest, IsRemoveSlotChangeRequest, RemoveSlotChangeRequest } from '../../../entities/library/skills/Skill';
 import { useParams } from 'react-router';
+import { Loader } from '../../theming/loader/Loader';
 
 export const CharacterComponent: React.FC = () => {
     const dispatch = useDispatch();
@@ -62,7 +62,7 @@ export const CharacterComponent: React.FC = () => {
     }, [dispatch, character]);
 
     if (character == null) {
-        return <LoadingText />;
+        return <Loader>Loading Character...</Loader>;
     }
 
     return (

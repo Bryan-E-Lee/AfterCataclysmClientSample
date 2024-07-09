@@ -1,4 +1,4 @@
-import { configureStore, Dispatch } from '@reduxjs/toolkit';
+import { AnyAction, configureStore, Dispatch } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import { AccountApiServerConfig } from '../apis/account/config/AccountApiServerConfig';
 import { AdventureHub } from '../apis/account/Hub.Adventure';
@@ -29,7 +29,7 @@ export type StoreGetState = ReturnType<typeof configureAppStore>['getState'];
 
 export default configureAppStore;
 
-function setupHubs(adventureHub: AdventureHub, dispatch: Dispatch<any>) {
+function setupHubs(adventureHub: AdventureHub, dispatch: Dispatch<AnyAction>) {
     adventureHub.dispatch = dispatch;
     const addAdventureHub: ApiSetAdventureHub = { type: 'API_SET_HUB_ADVENTURE', hub: adventureHub };
     dispatch(addAdventureHub);

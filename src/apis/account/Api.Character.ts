@@ -4,7 +4,6 @@ import { CharacterInitializer } from "../../entities/characters/Character";
 import { AccountApiServerConfig } from "./config/AccountApiServerConfig";
 import { AuthorizedRoles } from '../../config/AuthConfig';
 import { OwnedRhetoricInitializer, RhetoricPriority } from '../../entities/library/socials/Rhetoric';
-import { OwnedSkillInitializer } from '../../entities/library/skills/Skill';
 import { OwnedMinionInitializer } from '../../entities/library/minions/Minion';
 import { OwnedItemInitializer, OwnedModInitializer } from '../../entities/library/items/ItemInitializers';
 import { StatusCodes } from '../StatusCodes';
@@ -198,17 +197,18 @@ export class CharacterApi extends AccountApi<typeof AccountApiServerConfig.Chara
     
     /**
      * Adds a condition to a character.
+     * @param connectionId The adventure connection id this instance is using.
      * @param characterId The character's unique id.
      * @param conditionId The condition's unique id.
      */
-    public async addCondition(characterId: string, conditionId: string): Promise<ApiResponse<undefined>> {
+    public async addCondition(connectionId: string, characterId: string, conditionId: string): Promise<ApiResponse<undefined>> {
         try {
             const { uri, method } = this.config.getUriAndMethod('addCondition', { name: ':id', value: characterId });
             const token = await this.getToken(AuthorizedRoles.CharacterUpdate);
             const response = await fetch(uri, {
                 ...this.createDefaultRequestDetails(token),
                 method,
-                body: JSON.stringify(conditionId)
+                body: JSON.stringify({connectionId, conditionId})
             });
 
             if (this.isServerError(response)) {

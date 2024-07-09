@@ -18,7 +18,7 @@ export const AdventureContent: React.FC<Props> = (props: Props) => {
 
     const ownerName = isOwner
         ? 'You'
-        : userState.users.find(u => u.id == adventure.ownerId)?.displayName;
+        : userState.users.find(u => u.id == adventure.ownerId)?.name;
     
     const books = useSelector((app: ApplicationState) => app.book.books);
         

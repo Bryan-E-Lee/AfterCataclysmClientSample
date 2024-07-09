@@ -11,6 +11,8 @@ export const UserReducer: Reducer<UserState> = (state: UserState | undefined, in
     switch (action.type) {
         case 'USER_SET':
             return { ...state, me: action.userAccount };
+        case 'USER_SET_ADVENTURE_CONNECTION':
+            return { ...state, adventureConnectionId: action.adventureConnectionId };
         case 'USERS_GET':
             const users = new SortedSet(state.users);
             const toAdd = action.users.filter(u => u.id != state.me?.id);

@@ -5,18 +5,20 @@ import { JSXChildProps } from "../../entities/utils/jsx/Children";
 type DieProps = {
     className?: string;
     big?: boolean;
+    rolling?: boolean;
     onClick?: () => unknown;
     children: JSXChildProps;
 };
 
 export const Die: React.FC<DieProps> = (props: DieProps) => {
-    const dieSizeClass = props.big
-        ? 'big'
-        : '';
-    const customClassName = props.className ?? '';
+    const { className, big, rolling, onClick, children } = props;
+    const dieSizeClass = big ? 'big' : '';
+    const rollingClass = rolling ? 'rolling' : 'not-rolling';
+    const customClassName = className ?? '';
     return (
-        <span className={`die ${dieSizeClass} ${customClassName}`} onClick={props.onClick ?? (() => {})}>
-            <span className='die-face'>{props.children}</span>
+        <span className={`die ${dieSizeClass} ${rollingClass} ${customClassName}`} onClick={onClick ?? (() => {})}>
+            <span className='die-face set-face'>{children}</span>
+            <span className='die-face rolling-face'></span>
         </span>
     );
 }

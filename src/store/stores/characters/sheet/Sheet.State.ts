@@ -3,8 +3,9 @@ import { ItemFilter, ItemFilterInitializer } from "../../../../entities/filters/
 import { DieFace } from "../../../../entities/rolls/Roll";
 import { SkillName } from "../../../../entities/library/skills/SkillMap";
 import { ApplicationStorage } from "../../../storage/AppStorage";
+import { CommunalDice } from "../../../../entities/adventures/Adventure";
 
-export interface SheetState extends CharacterInitializer {
+export type SheetState = CharacterInitializer & {
     addToContainerId?: string;
     previewItemInstanceId?: string;
     previewSlotId?: string;
@@ -12,7 +13,7 @@ export interface SheetState extends CharacterInitializer {
     showItemAdder: boolean;
     itemFilter: ItemFilterInitializer;
     hand: DieFace[];
-    communalRolls: DieFace[];
+    communalRolls: CommunalDice;
     rollSkill?: SkillName;
     enforceRules: boolean;
     pendingProperties: { [key: string]: boolean } //Can't use map because state is immutable
@@ -54,7 +55,7 @@ export const SheetDefaultState: SheetState = {
     showItemAdder: false,
     itemFilter: ItemFilter.GetDefaultInitializer(),
     hand: [],
-    communalRolls: [],
+    communalRolls: [1, 1],
 
     enforceRules: ApplicationStorage.enforceRules,
 

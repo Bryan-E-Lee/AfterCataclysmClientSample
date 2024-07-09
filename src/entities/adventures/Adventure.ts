@@ -1,6 +1,9 @@
+import { DieFace } from "../rolls/Roll";
 import { AdventureEvent } from "./AdventureEvent";
 
-export interface Adventure {
+export type CommunalDice = [DieFace, DieFace];
+
+export type Adventure = {
     id: string;
     ownerId: string;
     inviteId: string;
@@ -10,8 +13,11 @@ export interface Adventure {
     privateNotes: string;
     active: boolean;
     allowsSharedContent: boolean;
+    communalDice: CommunalDice;
     playerIds: string[];
     characterIds: string[];
     allowedBookIds: string[];
     events: AdventureEvent[];
 }
+
+export type LocalAdventure = Adventure & { rolling: boolean };

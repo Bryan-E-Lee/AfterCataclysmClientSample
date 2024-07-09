@@ -1,20 +1,43 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Adventure } from "../../../entities/adventures/Adventure";
 import { EditIcon } from "../../icons";
+import { MarkdownContainer } from "../../theming/MarkdownContainer";
+import { AdventureActions } from "../../../store/stores/adventures/AdventureStore.Actions";
+import { useDispatch } from "react-redux";
 
 type Props = { adventure: Adventure, isOwner: boolean }
 
-type State = { editingPublicNotes: boolean, editingPrivateNotes: boolean }
-
 export const AdventureNotes: React.FC<Props> = (props: Props) => {
     const { adventure, isOwner } = props;
-    const [state, setState] = useState<State>({
-        editingPublicNotes: false,
-        editingPrivateNotes: false
-    });
-    const { editingPublicNotes, editingPrivateNotes } = state;
-    const editPublicNotes = () => setState({ editingPublicNotes: true, editingPrivateNotes: false });
-    const editPrivateNotes = () => setState({ editingPrivateNotes: true, editingPublicNotes: false });
+    const [editingPublicNotes, setEditingPublicNotes] = useState<boolean>(false);
+    const [editingPrivateNotes, setEditingPrivateNotes] = useState<boolean>(false);
+    const [currentPublicNotes, setCurrentPublicNotes] = useState<string>(adventure.publicNotes);
+    const [currentPrivateNotes, setCurrentPrivateNotes] = useState<string>(adventure.privateNotes);
+
+    const publicEditorRef = useRef<HTMLTextAreaElement>(null);
+    const privateEditorRef = useRef<HTMLTextAreaElement>(null);
+
+    const dispatch = useDispatch();
+    const editPublicNotes = () => {
+        setEditingPublicNotes(true);
+        setEditingPrivateNotes(false);
+        publicEditorRef.current?.focus();
+    }
+    const editPrivateNotes = () => {
+        setEditingPublicNotes(false);
+        setEditingPrivateNotes(true);
+        privateEditorRef.current?.focus();
+    }
+
+    const setPublicNotes = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        dispatch(AdventureActions.setPublicNotes(adventure, e.target.value));
+        setEditingPublicNotes(false);
+    }
+    const setPrivateNotes = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        dispatch(AdventureActions.setPrivateNotes(adventure, e.target.value));
+        setEditingPrivateNotes(false);
+    }
+
     return (
         <div className="adventure-notes">
             <div className="notes-section">
@@ -24,11 +47,12 @@ export const AdventureNotes: React.FC<Props> = (props: Props) => {
                 </h3>
                 {!editingPublicNotes && (
                     <div>
-                        {adventure.publicNotes}
+                        {adventure.publicNotes != "" ? <MarkdownContainer>{currentPublicNotes}</MarkdownContainer> : <em>Empty</em>}
                     </div>
                 )}
                 {editingPublicNotes && (
-                    <input placeholder="TODO: Add wysiwyg" type="text" onBlur={() => setState({ ...state, editingPublicNotes: false })} />
+                    <textarea ref={publicEditorRef} value={currentPublicNotes} autoFocus
+                        onBlur={setPublicNotes} onChange={(e) => setCurrentPublicNotes(e.target.value)}></textarea>
                 )}
             </div>
             {isOwner && (
@@ -39,11 +63,12 @@ export const AdventureNotes: React.FC<Props> = (props: Props) => {
                     </h3>
                     {!editingPrivateNotes && (
                         <div>
-                            {adventure.privateNotes}
+                            {adventure.privateNotes != "" ? <MarkdownContainer>{currentPrivateNotes}</MarkdownContainer> : <em>Empty</em>}
                         </div>
                     )}
                     {editingPrivateNotes && (
-                        <input placeholder="TODO: Add wysiwyg" type="text" onBlur={() => setState({ ...state, editingPrivateNotes: false })} />
+                        <textarea ref={privateEditorRef} value={currentPrivateNotes} autoFocus
+                            onBlur={setPrivateNotes} onChange={(e) => setCurrentPrivateNotes(e.target.value)}></textarea>
                     )}
                 </div>
             )}

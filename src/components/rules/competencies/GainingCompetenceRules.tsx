@@ -18,7 +18,7 @@ const GainingCompetenceRules = () => (
             Just like normal comepetencies, you can gain custom competencies too!
         </p>
         <Example>
-            If your GM has created a campaign where you learned how to perform a cult's ritual to gain their trust, it makes sense that you would become competent at it.
+            If your GM has created an adventure where you learned how to perform a cult's ritual to gain their trust, it makes sense that you would become competent at it.
         </Example>
     </section>
 )

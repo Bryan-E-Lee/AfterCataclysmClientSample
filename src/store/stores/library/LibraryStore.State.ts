@@ -15,15 +15,19 @@ import { RhetoricInitializer } from "../../../entities/library/socials/Rhetoric"
 export interface LibraryState {
     books: Book[];
     allBooksLoaded: boolean;
+    booksError: boolean;
 
     competencies: CompetencyInitializer[];
     allCompetenciesLoaded: boolean;
+    competenciesError: boolean;
 
     conditions: Condition[];
     allConditionsLoaded: boolean;
+    conditionsError: boolean;
 
     hazards: Hazard[];
     allHazardsLoaded: boolean;
+    hazardsError: boolean;
 
     items: ItemInitializer[];
     allItemsLoaded: boolean;
@@ -31,18 +35,23 @@ export interface LibraryState {
 
     minions: MinionInitializer[];
     allMinionsLoaded: boolean;
+    minionsError: boolean;
 
     perks: PerkInitializer[];
     allPerksLoaded: boolean;
+    perksError: boolean;
 
     personalities: PersonalityInitializer[];
     allPersonalitiesLoaded: boolean;
+    personalitiesError: boolean;
 
     rhetorics: RhetoricInitializer[];
     allRhetoricsLoaded: boolean;
+    rhetoricsError: boolean;
 
     skills: SkillInitializer[];
     allSkillsLoaded: boolean;
+    skillsError: boolean;
 
     tags: string[];
     allTagsLoaded: boolean;
@@ -50,26 +59,37 @@ export interface LibraryState {
 
     enemies: Enemy[];
     allEnemiesLoaded: boolean;
+    enemiesError: boolean;
+
     enemyActiveAbilities: EnemyActiveAbility[];
     allEnemyActiveAbilitiesLoaded: boolean;
+    enemyActiveAbilitiesError: boolean;
+
     enemyReactiveAbilities: EnemyReactiveAbility[];
     allEnemyReactiveAbilitiesLoaded: boolean;
+    enemyReactiveAbilitiesError: boolean;
+
     enemyPassiveAbilities: EnemyPassiveAbility[];
     allEnemyPassiveAbilitiesLoaded: boolean;
+    enemyPassiveAbilitiesError: boolean;
 }
 
 export const LibraryDefaultState: LibraryState = {
     books: [],
     allBooksLoaded: false,
+    booksError: false,
 
     competencies: [],
     allCompetenciesLoaded: false,
+    competenciesError: false,
 
     conditions: [],
     allConditionsLoaded: false,
+    conditionsError: false,
 
     hazards: [],
     allHazardsLoaded: false,
+    hazardsError: false,
 
     items: [],
     allItemsLoaded: false,
@@ -77,18 +97,23 @@ export const LibraryDefaultState: LibraryState = {
 
     minions: [],
     allMinionsLoaded: false,
+    minionsError: false,
 
     perks: [],
     allPerksLoaded: false,
+    perksError: false,
 
     personalities: [],
     allPersonalitiesLoaded: false,
+    personalitiesError: false,
     
     rhetorics: [],
     allRhetoricsLoaded: false,
+    rhetoricsError: false,
 
     skills: [],
     allSkillsLoaded: false,
+    skillsError: false,
 
     tags: [],
     allTagsLoaded: false,
@@ -96,11 +121,17 @@ export const LibraryDefaultState: LibraryState = {
 
     enemies: [],
     allEnemiesLoaded: false,
+    enemiesError: false,
 
     enemyActiveAbilities: [],
     allEnemyActiveAbilitiesLoaded: false,
+    enemyActiveAbilitiesError: false,
+
     enemyReactiveAbilities: [],
     allEnemyReactiveAbilitiesLoaded: false,
+    enemyReactiveAbilitiesError: false,
+
     enemyPassiveAbilities: [],
     allEnemyPassiveAbilitiesLoaded: false,
+    enemyPassiveAbilitiesError: false,
 };

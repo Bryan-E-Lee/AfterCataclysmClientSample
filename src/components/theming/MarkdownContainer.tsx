@@ -68,7 +68,11 @@ const CommonMarkdownComponents = {
     },
 }
 
-export const MarkdownContainer = (props: Props) => <ReactMarkdown className="markdown-container" remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={CommonMarkdownComponents}>{props.children}</ReactMarkdown>;
+const DisallowedElements = [
+    "script"
+]
+
+export const MarkdownContainer = (props: Props) => <ReactMarkdown className="markdown-container" remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={CommonMarkdownComponents} disallowedElements={DisallowedElements}>{props.children}</ReactMarkdown>;
 export const MarkdownContainerSafe = (props: Props) => <ReactMarkdown className="markdown-container" remarkPlugins={[remarkGfm]} components={CommonMarkdownComponents}>{props.children}</ReactMarkdown>
 
 

@@ -3,6 +3,14 @@
 .adventure {
     @include themed-page();
 
+    .adventure-header {
+        display: flex;
+
+        .adventure-name {
+            @include flex-fill();
+        }
+    }
+
     .adventure-invite {
         .copyable-text {
             margin-bottom: $padder;

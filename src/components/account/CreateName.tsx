@@ -18,7 +18,7 @@ export const CreateName = () => {
                         <label>Username</label>
                         <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
                     </div>
-                    <ThemedButton onClick={() => dispatch(UserActions.submitDisplayName(displayName, () => navigate("/")))}>
+                    <ThemedButton disabled={displayName == ""} onClick={() => dispatch(UserActions.submitDisplayName(displayName, () => navigate("/")))}>
                         Submit
                     </ThemedButton>
                 </form>

@@ -9,7 +9,7 @@ import { Profile } from "./account/Profile";
 import { App } from "./app";
 import { TableOfContents } from "./articles/TableOfContents";
 import { Adventures } from "./collection/adventures";
-import { AdventureComponent } from "./collection/adventures/AdventureComponent";
+import { AdventureView } from "./collection/adventures/AdventureView";
 import { AdventureList } from "./collection/adventures/AdventureList";
 import { JoinAdventure } from "./collection/adventures/JoinAdventure";
 import { Characters } from "./collection/characters";
@@ -101,7 +101,7 @@ export const AppRouter = createBrowserRouter([
                     },
                     {
                         path: ":id",
-                        element: <AdventureComponent />
+                        element: <AdventureView />
                     },
                     {
                         path: "*",

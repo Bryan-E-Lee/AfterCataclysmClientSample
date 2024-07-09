@@ -1,7 +1,7 @@
-export interface UserAccount {
+export type UserAccount = {
     id: string;
+    internalName: string;
     name: string;
-    displayName?: string;
     identifier: string;
     ownedBooks: string[];
 }

@@ -36,6 +36,14 @@ export const AdventureApiConfig = new ApiConfig({
         'deactivate': {
             route: '/:id/Deactivate',
             method: 'DELETE'
+        },
+        'setCommunalDice': {
+            route: '/:id/SetCommunalDice',
+            method: 'POST'
+        },
+        'rollCommunalDice': {
+            route: '/:id/RollCommunalDice',
+            method: 'POST'
         }
     }
 })

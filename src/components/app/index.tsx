@@ -50,7 +50,7 @@ export const App: React.FC = () => {
     
     const me = useSelector((app: ApplicationState) => app.user.me);
     useEffect(() => {
-        const mustCreateName = isAuthenticated && me != null && me.displayName == null;
+        const mustCreateName = isAuthenticated && me != null && me.name == "";
         if (mustCreateName) {
             navigate("/Profile/CreateName");
         }

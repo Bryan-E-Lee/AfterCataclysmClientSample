@@ -55,7 +55,7 @@ export class SortedSet<T extends NamedEntity> implements Iterable<T> {
         while (minIndex <= maxIndex) {
             pivot = Math.floor((minIndex + maxIndex) * 0.5);
             check = this.collection[pivot];
-            if(check.name < name) {
+            if (check.name < name) {
                 minIndex = pivot + 1;
             }
             else if (check.name > name) {
@@ -118,8 +118,10 @@ export class SortedSet<T extends NamedEntity> implements Iterable<T> {
         }
 
         let index = this.search(entity.name);
-        const spliceStart = index < 0 ? ~index : (index + 1);
-        this.collection.splice(spliceStart, 0, entity);
+        if (index >= 0) {
+            console.error("Duplicate inserted into set.");
+        }
+        this.collection.splice(~index, 0, entity);
         this.hashmap.set(key, entity);
         return true;
     }

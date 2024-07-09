@@ -9,11 +9,12 @@ type OnChangeFunction = (value: DieFace) => void;
 type Props = {
     faceValue: DieFace | null;
     onChange: OnChangeFunction;
+    rolling?: boolean;
     disabled?: boolean;
 }
 
 export const EditableDie = (props: Props) => {
-    const { faceValue, onChange, disabled } = props;
+    const { faceValue, onChange, rolling, disabled } = props;
     const [expanded, setExpanded] = useState(false);
 
     const className = `die-picker ${expanded ? 'expanded' : 'constricted'}`;
@@ -31,7 +32,7 @@ export const EditableDie = (props: Props) => {
 
     return (
         <div className={`editable-die ${disabled ? 'disabled' : 'enabled'}`}>
-            <Die big className="interactable" onClick={() => setExpanded(true)}>
+            <Die big className="interactable" rolling={rolling} onClick={() => setExpanded(true)}>
                 {faceValue || '?'}
             </Die>
             <ExternalClickDetector className={className} onExternalClickDetected={() => setExpanded(false)}>

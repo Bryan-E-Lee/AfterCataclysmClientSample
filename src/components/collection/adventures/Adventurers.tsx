@@ -5,7 +5,6 @@ import { CharacterInitializer } from "../../../entities/characters/Character"
 import { UserAccount } from "../../../entities/user/UserAccount"
 import { ApplicationState } from "../../../store/stores/ApplicationState"
 import { CharacterActions } from "../../../store/stores/collection/characters/CharacterStore.Actions"
-import { UserActions } from "../../../store/stores/users/UserStore.Actions"
 
 type Props = { adventure: Adventure }
 
@@ -14,17 +13,6 @@ export const Adventurers: React.FC<Props> = (props: Props) => {
     const { me, users } = useSelector((app: ApplicationState) => app.user);
     const { characters, otherPlayerCharacters} = useSelector((app: ApplicationState) => app.character);
     const dispatch = useDispatch();
-    const allPlayerIds = [...adventure.playerIds, adventure.ownerId];
-    
-    useEffect(() => {
-        const otherUserIds = allPlayerIds.filter(id => id != me?.id);
-        dispatch(UserActions.getUsersByIds(...otherUserIds));
-    }, [dispatch, me]);
-
-    useEffect(() => {
-        dispatch(CharacterActions.getCharacters());
-        dispatch(CharacterActions.getCharactersByIds(adventure.characterIds));
-    }, [dispatch, adventure.characterIds]);
     
     if (me == null) {
         return null;
@@ -39,29 +27,33 @@ export const Adventurers: React.FC<Props> = (props: Props) => {
     return (
         <div>
             <div>
-                <label className="standout">Game Master:</label> {owner.displayName}
+                <label className="standout">Game Master:</label> {owner.name}
             </div>
             <div>
                 <label className="standout">Players:</label>
                 {!players.any() && 'No players yet!'}
-                {players.map(p => <AdventurePlayer key={p.id} player={p} characters={adventureCharacters} />)}
+                {players.map(p => <AdventurePlayer key={p.id} me={me} player={p} characters={adventureCharacters} />)}
             </div>
         </div>
     )
 }
 
-type PlayerProps = { player: UserAccount, characters: CharacterInitializer[] }
+type PlayerProps = { me: UserAccount, player: UserAccount, characters: CharacterInitializer[] }
 const AdventurePlayer: React.FC<PlayerProps> = (props: PlayerProps) => {
-    const { player, characters } = props;
+    const { me, player, characters } = props;
     const character = characters.find(c => c.ownerId == player.id);
-    const displayName = player.displayName ?? 'Anonymous';
+    const isPlayer = me.id == player.id;
+    let displayName: string;
+    if (isPlayer) {
+        displayName = "You";
+    }
+    else {
+        displayName = player.name != "" ? player.name : 'Anonymous';
+    }
     if (character == null) {
         return (
             <div>
-                <label>{displayName}</label>
-                <div>
-                    {displayName} doesn't have a character for this campaign yet.
-                </div>
+                <label>{displayName}</label> - {displayName} {isPlayer ? "don't" : "doesn't"} have a character for this adventure yet.
             </div>
         );
     }

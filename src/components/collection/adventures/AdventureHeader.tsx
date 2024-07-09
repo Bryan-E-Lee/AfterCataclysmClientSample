@@ -29,26 +29,22 @@ export const AdventureHeader: React.FC<Props> = (props: Props) => {
         }
     }
     return (
-        <h1>
-            <span className={state.editing ? 'hidden' : 'visible'}>{adventure.name}</span>
-            <input type="text" ref={inputRef} className={state.editing ? 'visible' : 'hidden'}
-                value={state.currentName}
-                onChange={(e) => setState({ ...state, currentName: e.target.value })}
-                onBlur={(e) => {
-                    dispatch(AdventureActions.updateName(adventure, state.currentName));
-                    setState({ ...state, editing: false });
-                }} />
+        <h1 className="adventure-header">
+            <div className="adventure-name">
+                <span className={state.editing ? 'hidden' : 'visible'}>{adventure.name}</span>
+                <input type="text" ref={inputRef} className={state.editing ? 'visible' : 'hidden'}
+                    value={state.currentName}
+                    onChange={(e) => setState({ ...state, currentName: e.target.value })}
+                    onBlur={(e) => {
+                        dispatch(AdventureActions.updateName(adventure, state.currentName));
+                        setState({ ...state, editing: false });
+                    }} />
+                {isOwner && <button className="interactable-button" onClick={() => setState({ ...state, editing: true })}>
+                                <EditIcon />
+                            </button>}
+            </div>
+            {isOwner && <ThemedButton onClick={confirmDeactivate}>Deactivate</ThemedButton>}
             {!isOwner && <ThemedButton onClick={() => dispatch(AdventureActions.leave(adventure.id, () => navigate("/Adventures")))}>Leave Adventure</ThemedButton>}
-            {isOwner && (
-                <>
-                    <button className="interactable-button" onClick={() => setState({ ...state, editing: true })}>
-                        <EditIcon />
-                    </button>
-                    <ThemedButton onClick={confirmDeactivate}>
-                        Deactivate
-                    </ThemedButton>
-                </>
-            )}
         </h1>
     )
 }

@@ -1,5 +1,5 @@
 import { HubConnection, HubConnectionBuilder, LogLevel, RetryContext } from '@microsoft/signalr';
-import { Dispatch, Middleware } from 'redux';
+import { AnyAction, Dispatch, Middleware } from 'redux';
 import { ErrorToast, InfoToast } from '../entities/toasts/Toasts';
 import { AppThunkAction } from '../store/stores/ApplicationState';
 import { ToastDispatchables } from '../store/stores/toasts/Toasts.Actions';
@@ -17,7 +17,7 @@ export abstract class BaseHub<TConfig extends HubConfig> extends AuthorizedWebSe
 
     protected readonly config: TConfig;
     protected _dispatch?: Dispatch<any>;
-    public set dispatch(dispatch: Dispatch<any>) {
+    public set dispatch(dispatch: Dispatch<AnyAction>) {
         this._dispatch = dispatch;
     }
 

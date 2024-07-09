@@ -12,7 +12,7 @@ export const AccountNav: React.FC = () => {
         <>
             {isAuthenticated && currentUser && (
             <Link className='user-info' to='/Profile'>
-                {currentUser.displayName ?? user!.name}
+                {currentUser.name == "" ? user!.name : currentUser.name}
             </Link>)}
             <AccountNavButton />
         </>
